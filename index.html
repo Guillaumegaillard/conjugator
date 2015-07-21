@@ -8,7 +8,7 @@
 <div ng-controller="myCtrl">
  	
  	
-	<h1>Verb {{verb.name +" "+target}}</h1>
+	<h1>Verb: {{verb.name +" "+target}}</h1>
 	<p ng-bind="check()"></p>
 	<button ng-click="newVerb()">Button</button>
 	<p><input type="text" class="bigText" ng-model="name"  ng-keypress="validate($event)"></p>
