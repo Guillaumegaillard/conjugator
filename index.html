@@ -2,22 +2,31 @@
 <html lang="en-US" ng-app="myApp" >
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
 <script src="main.js"></script>
+<script src="verbs.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css">
+<head>
+	 <meta charset="utf-8" />
+	 <title>Conjugator</title>
+</head>
 <body>
 
 <div ng-controller="myCtrl" ng-init="newVerb()">
  	
  	
-	<h1>Verbx: {{verb.name +" "+target}}</h1>
-	<p ng-bind="check()"></p>
+	<h1>Verb: {{person +" du "+tense+" du verb " +verb.name +" : "+target}}</h1>
+	
+<!--
 	<button ng-click="newVerb()">Button</button>
-	<p><input type="text" class="bigText" ng-model="name"  ng-keypress="validate($event)"></p>
+-->
+	<p>{{pronom+" "}}<input type="text" class="bigText" ng-model="name"   ng-keydown="validate($event)" >
+	{{message}}
+	</p>
 	<ul>
   <li ng-repeat="x	in verbs">
     {{ x.name + ', ' + x.a }}
   </li>
 </ul>
-<h1>{{one +" "+two}}</h1>
+
 </div>
 
 </body>
