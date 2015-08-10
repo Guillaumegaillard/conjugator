@@ -9,4 +9,8 @@ var verbs=[{
 		"name": "etre",
 		"t":[["suis","es","est","sommes","etes","sont"],
 			["\u00E9tais","\u00E9tais","\u00E9tait","\u00E9tions","\u00E9tiez","\u00E9taient"]]
+	},{
+		"name": "avoir",
+		"t":[["ai","as","a","avons","avez","ont"],
+			["avais","avais","avait","avions","aviez","avaient"]]
 	}];
