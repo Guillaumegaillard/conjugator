@@ -381,10 +381,15 @@ app.controller('myCtrl', function($scope) {
 			$scope.target+=$scope.target_chunks["name1"];
 		};
 		
-		// adj bears suffix
+		// adj bears suffix unless bat
 		if ($scope.target_chunks["adj1"].length > 0){
 			$scope.target+=" ";
 			$scope.target+=$scope.target_chunks["adj1"];
+		};
+
+		if (bat1) {
+			$scope.target+=" ";
+			$scope.target+=$scope.target_chunks["ordin1"];			
 		};
 
 		if ($scope.target_chunks["suf_name1"].length > 0){
@@ -393,7 +398,6 @@ app.controller('myCtrl', function($scope) {
 			if ((name1_is_pronom) && ($scope.target.slice(-1)!="k") ) {
 				$scope.target+=$scope.target_chunks["suf_name1"];
 			} else {
-				//si prenom et consonne et suf k => +ek
 				if (!(name1_is_pronom)){
 					lastchar=$scope.target.slice(-1);
 					last_is_vowel= (lastchar.match(vowelRegex));
@@ -412,10 +416,6 @@ app.controller('myCtrl', function($scope) {
 					};
 				};
 			};
-		};
-		if (bat1) {
-			$scope.target+=" ";
-			$scope.target+=$scope.target_chunks["ordin1"];			
 		};
 		$scope.target+=" ";
 
@@ -436,6 +436,10 @@ app.controller('myCtrl', function($scope) {
 			$scope.target+=" ";
 			$scope.target+=$scope.target_chunks["adj2"];
 		};
+		if (bat2) {
+			$scope.target+=" ";
+			$scope.target+=$scope.target_chunks["ordin2"];			
+		};
 
 		if ($scope.target_chunks["suf_name2"].length > 0){
 
@@ -443,10 +447,6 @@ app.controller('myCtrl', function($scope) {
 			if (lastchar=="r") $scope.target+="r";
 			if (lastchar=="a") $scope.target=$scope.target.slice(0,-1);
 			$scope.target+=$scope.target_chunks["suf_name2"];
-		};
-		if (bat2) {
-			$scope.target+=" ";
-			$scope.target+=$scope.target_chunks["ordin2"];			
 		};
 
 		// verb
