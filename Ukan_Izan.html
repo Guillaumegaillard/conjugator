@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-US" ng-app="myApp" >
+<head>
+  <meta charset="utf-8" />
+	<title>Ukan-Izan</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <script src="essentials.js"></script>
+  <script src="voca1.js"></script>
+  <script src="ukan_izan.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body role="document">
+  <div class="container theme-showcase" role="main">
+    <div ng-controller="myCtrl" ng-init="newTest()">
+      <h1>Test : {{deter1 + adj1 + name1 + verb  +" "+ deter2+ adj2 + name2 + "." | capitalize}}</h1>
+  	
+      <button ng-click="newTest()">Nouveau</button>
+      <button ng-click="newHint()">Aide Vocabulaire</button>
+      <button ng-click="show_verb_tab()">Aide Conjugaison</button>
+      <button ng-click="correction()">Correction</button>
+
+    	<p>
+        <input  ng-class="check()==1?'bg-success-light':'bg-danger-light'" type="text" class="bigText" ng-model="client_input"   ng-keydown="validate($event)" >
+        </br>
+      	&nbsp;{{message | capitalize}}
+      </p>
+
+    <div>
+      <label>Encore {{num_hints}} aides voca possibles...</label>
+
+      <ul>
+        <li ng-repeat="x in shownHints">
+          {{ x.fr + ': ' + x.eus }}
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <table ng-show="shown_verb_tab">
+        <tr>
+          <td>{{ infinitif.fr }}</td>
+          <td ng-repeat="x in infinitif.fr_c" >{{ x }}</td>
+        </tr>
+        <tr ng-repeat="x in infinitif.eus_c">
+          <td>{{ infinitif.eus }}</td>
+          <td ng-repeat="y in x" >{{ y }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>

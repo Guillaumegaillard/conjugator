@@ -1,8 +1,16 @@
-	.bigText{
+.bg-success-light{
+  background: #dff0d8;
+}
+.bg-danger-light{
+  background: #f2dede;
+}
+
+.bigText{
   height: 46px;
   padding: 10px 16px;
- # font-size: 38px;
-  #line-height: 1.33;
+  width: 460px;
+  # font-size: 38px;
+  # line-height: 1.33;
   border-radius: 20px;
 }
 
@@ -23,4 +31,18 @@ body {
 
 .theme-showcase .navbar .container {
   width: auto;
+}
+
+table, th , td {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+
+table tr:nth-child(even) {
+  background-color: #ffffff;
 }

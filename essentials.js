@@ -1,0 +1,89 @@
+var deters=[
+    {
+        "fr": "le ",
+        "fr_f": "la ",
+        "fr_before_vowel": "l'",
+        "quant": "deter",
+        "num": "sing",
+    },
+    {
+        "fr": "les ",
+        "quant": "deter",
+        "num": "plur",
+    },    
+    {
+        "fr": "des ",
+        "quant": "indet",
+        "num": "plur",
+    },    
+    {
+        // "fr": "du (1 part. indén. de) ",
+        "fr": "du ",
+        "fr_f": "de la ",
+        "fr_before_vowel": "de l'",
+        "quant": "indet",
+        "num": "sing",
+    },    
+    {
+        "fr": "trois ",
+        "eus": "hiru",
+        "quant": "ordin", 
+        "num": "plur",
+    },
+    {
+        "fr": "un ",
+        "fr_f": "une ",
+        "eus": "bat",
+        "quant": "ordin",
+        "num": "sing",
+    }
+
+];
+
+var pronoms=[{
+        "fr": "je",
+        "eus": "ni",
+        "fr_pers":0,
+    },
+    {
+        "fr": "tu",
+        "eus": "zu",
+        "fr_pers":1,
+    },
+    {
+        "fr": "elles",
+        "plur": true,
+        "fr_f": true,
+        "eus": "beraiek",
+        "fr_pers":5,
+    },
+    {
+        "fr": "elle",
+        "fr_f": true,
+        "eus": "bera",
+        "fr_pers":2,
+    },
+    ];
+
+var verbs=[
+    {
+        "fr": "être",
+        "eus": "izan",
+        "fr_c":["suis","es","est","sommes","êtes","sont"],
+        "eus_c":[["naiz","zara","da","gara","zarete","dira"]],
+        "trans":false
+    },
+    {
+        "fr": "avoir",
+        "eus": "ukan",
+        "fr_c":["ai","as","a","avons","avez","ont"],
+        "eus_c":
+            [
+                ["dut","duzu","du","dugu","duzue","dute"],
+                ["ditut","dituzu","ditu","ditugu","dituzue","dituzte"]
+            ],
+        "trans":true
+    },
+
+];
+
