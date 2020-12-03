@@ -354,8 +354,7 @@ app.controller('myCtrl', function($scope) {
 			if ($scope.target_chunks["suf_name1"]=="ak") $scope.target_chunks["suf_name1"]="ek";
 			if ($scope.target_chunks["suf_name1"]=="a") $scope.target_chunks["suf_name1"]="ak";
 			if ($scope.target_chunks["suf_name1"]=="") $scope.target_chunks["suf_name1"]="k";
-			if (name1_is_pronom) $scope.target_chunks["suf_name1"]="k";
-
+			if (name1_is_pronom) $scope.target_chunks["suf_name1"]="k";			
 		};
 		$scope.target_chunks["verb"]=infinitif.eus_c[pers_COD][pers];
 
@@ -422,8 +421,11 @@ app.controller('myCtrl', function($scope) {
 					if (name1_is_last_and_prenom){
 						if ($scope.target_chunks["suf_name1"]=="a") $scope.target_chunks["suf_name1"]="";
 						// if ($scope.target_chunks["suf_name1"]=="ak") $scope.target_chunks["suf_name1"]="ak";
+						if (infinitif.trans) {
+							if ($scope.target_chunks["suf_name1"]=="ak") $scope.target_chunks["suf_name1"]="k";
+						}
 						if (($scope.target_chunks["suf_name1"]=="ak")&&(lastchar=="a")) $scope.target_chunks["suf_name1"]="k";
-						if ($scope.target_chunks["suf_name1"]=="ek") $scope.target_chunks["suf_name1"]="k";
+						if ($scope.target_chunks["suf_name1"]=="ek") $scope.target_chunks["suf_name1"]="k"; //TODO: check that (Guillaumeek?)
 						// if ($scope.target_chunks["suf_name1"]=="k") $scope.target_chunks["suf_name1"]="k";
 
 					};
