@@ -26,7 +26,7 @@ app.controller('myCtrl', function($scope) {
 	$scope.target = "";
 	$scope.target_chunks = {"name1":"", "ordin1":"", "adj1":"", "verb":"", "name2":"", "adj2":"", "ordin2":""};
 
-	$scope.message = " Écrire la traduction. Ici, de, du, de la (et des) = indéterminé(s)";
+	$scope.message = " Écrire la traduction. NB: l'ordre des mots n'est pas vérifié ici.";
 
 	$scope.check = function() {
 
@@ -85,7 +85,7 @@ app.controller('myCtrl', function($scope) {
 		$scope.shownHints=[];
 		$scope.shown_verb_tab = false;
 
-		$scope.message = " Écrire la traduction. Ici, de, du, de la (et des) = indéterminé(s)";
+		$scope.message = " Écrire la traduction. NB: l'ordre des mots n'est pas vérifié ici.";
 
 		$scope.target = "";
 		$scope.target_chunks = {"name1":"", "suf_name1":"", "ordin1":"", "adj1":"", "verb":"", "name2":"", "suf_name2":"", "adj2":"", "ordin2":""};
@@ -129,15 +129,19 @@ app.controller('myCtrl', function($scope) {
 					};
 				} else {
 					if (deters[iRandom_deter1].quant == "deter") $scope.target_chunks["suf_name1"]="ak";
+					if (deters[iRandom_deter1].quant == "indet") $scope.target_chunks["ordin1"]=deters[iRandom_deter1].eus;
 				};
 				if ("plur_fr" in name1) {$scope.name1 = name1.plur_fr;} else{$scope.name1 +="s";}
 			} else{
 				if (deters[iRandom_deter1].quant == "deter") $scope.target_chunks["suf_name1"]="a";
+				if (deters[iRandom_deter1].quant == "indet") $scope.target_chunks["ordin1"]=deters[iRandom_deter1].eus;
 			};
 			if (deters[iRandom_deter1].quant == "ordin") {
 				$scope.hints.push(deters[iRandom_deter1]);
 				$scope.target_chunks["ordin1"]=deters[iRandom_deter1].eus;
 			}
+			if (deters[iRandom_deter1].quant == "indet") $scope.hints.push(deters[iRandom_deter1]);
+
 			
 
 
@@ -280,6 +284,7 @@ app.controller('myCtrl', function($scope) {
 					}
 				} else {
 					if (deters[iRandom_deter2].quant == "deter") $scope.target_chunks["suf_name2"]="ak";
+					if (deters[iRandom_deter2].quant == "indet") $scope.target_chunks["ordin2"]=deters[iRandom_deter2].eus;
 				};
 				if ("plur_fr" in name2) {$scope.name2 = name2.plur_fr;} else{$scope.name2 +="s";}
 			} else {
@@ -288,7 +293,9 @@ app.controller('myCtrl', function($scope) {
 					if ( (name1_is_pronom) || ( (!(name1_is_pronom)) && (iRandom_deter1!=iRandom_deter2) )) $scope.hints.push(deters[iRandom_deter2]);
 					$scope.target_chunks["ordin2"]=deters[iRandom_deter2].eus;
 				};
+				if (deters[iRandom_deter2].quant == "indet") $scope.target_chunks["ordin2"]=deters[iRandom_deter2].eus;
 			};
+			if (deters[iRandom_deter2].quant == "indet") $scope.hints.push(deters[iRandom_deter2]);
 
 
 			var iRandom_adj2 = Math.floor((Math.random() * (1+$scope.adjs.length)));
@@ -370,7 +377,7 @@ app.controller('myCtrl', function($scope) {
 		var lastchar;
 		var last_is_vowel;
 
-		if ($scope.target_chunks["ordin1"]=="bat"){
+		if (($scope.target_chunks["ordin1"]=="bat")||(($scope.target_chunks["ordin1"].length>0)&&(deters[iRandom_deter1].quant == "indet"))) {
 			bat1=true;
 			$scope.target+=$scope.target_chunks["name1"];
 		} else {
@@ -420,8 +427,8 @@ app.controller('myCtrl', function($scope) {
 		$scope.target+=" ";
 
 		//GN2 ###################################################################################
-		// bat2 = false;
-		if ($scope.target_chunks["ordin2"]=="bat"){
+		// if ($scope.target_chunks["ordin2"]=="bat"){
+		if (($scope.target_chunks["ordin2"]=="bat")||(($scope.target_chunks["ordin2"].length>0)&&(deters[iRandom_deter2].quant == "indet"))) {
 			bat2=true;
 			$scope.target+=$scope.target_chunks["name2"];
 		} else {

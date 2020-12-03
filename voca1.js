@@ -38,9 +38,9 @@ var names=[
         "eus": "aste",
     },
     {
-        "fr": "fille",
+        "fr": "vérité",
         "fr_f": true,
-        "eus": "neska",
+        "eus": "egia",
     }
 
 ];
