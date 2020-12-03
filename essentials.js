@@ -19,7 +19,7 @@ var deters=[
     },    
     {
         // "fr": "du (1 part. indén. de) ",
-        "fr": "un peu de ",
+        "fr": "peu de ",
         "quant": "indet",
         "num": "sing",
         "eus": "gutxi",
