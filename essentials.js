@@ -23,7 +23,21 @@ var deters=[
         "quant": "indet",
         "num": "sing",
         "eus": "gutxi",
-    },      
+    },
+    {
+        // "fr": "du (1 part. indén. de) ",
+        "fr": "un petit nombre de ",
+        "quant": "indet",
+        "num": "plur",
+        "eus": "gutxi",
+    }, 
+    {
+        // "fr": "du (1 part. indén. de) ",
+        "fr": "un peu de ",
+        "quant": "indet",
+        "num": "sing",
+        "eus": "pixka bat",
+    },          
     // {
     //     // "fr": "du (1 part. indén. de) ",
     //     "fr": "du ",
