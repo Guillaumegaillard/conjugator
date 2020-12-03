@@ -475,8 +475,8 @@ app.controller('myCtrl', function($scope) {
 		if ($scope.target_chunks["suf_name2"].length > 0){
 			lastchar=$scope.target.slice(-1);
 			if (name2_is_last_and_prenom){
-				if ($scope.target_chunks["suf_name2"]=="a") $scope.target_chunks["suf_name1"]="";
-				if (($scope.target_chunks["suf_name2"]=="ak")&&(lastchar=="a")) $scope.target_chunks["suf_name1"]="k";
+				if ($scope.target_chunks["suf_name2"]=="a") $scope.target_chunks["suf_name2"]="";
+				if (($scope.target_chunks["suf_name2"]=="ak")&&(lastchar=="a")) $scope.target_chunks["suf_name2"]="k";
 			};
 			if ($scope.target_chunks["suf_name2"].length > 0){
 				if (lastchar=="r") $scope.target+="r";
