@@ -19,7 +19,10 @@ var deters=[
     },    
     {
         // "fr": "du (1 part. indén. de) ",
-        "fr": "peu de ",
+        "fr": "peu d'un ",
+        "fr_f": "peu d'une ",
+        // "fr_before_vowel": "peu de l'",
+        // "fr": "peu de ",
         "quant": "indet",
         "num": "sing",
         "eus": "gutxi",
@@ -33,7 +36,8 @@ var deters=[
     }, 
     {
         // "fr": "du (1 part. indén. de) ",
-        "fr": "un peu de ",
+        "fr": "une petite partie de ",
+        // "fr": "un peu de ",
         "quant": "indet",
         "num": "sing",
         "eus": "pixka bat",

@@ -297,7 +297,10 @@ app.controller('myCtrl', function($scope) {
 				};
 				if (deters[iRandom_deter2].quant == "indet") $scope.target_chunks["ordin2"]=deters[iRandom_deter2].eus;
 			};
-			if (deters[iRandom_deter2].quant == "indet") $scope.hints.push(deters[iRandom_deter2]);
+			if (deters[iRandom_deter2].quant == "indet") {
+				// $scope.hints.push(deters[iRandom_deter2]);
+				if ( (name1_is_pronom) || ( (!(name1_is_pronom)) && (iRandom_deter1!=iRandom_deter2) )) $scope.hints.push(deters[iRandom_deter2]);
+			}
 
 
 			var iRandom_adj2 = Math.floor((Math.random() * (1+$scope.adjs.length)));
