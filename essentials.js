@@ -30,6 +30,7 @@ var deters=[
     {
         // "fr": "du (1 part. indén. de) ",
         "fr": "un petit nombre de ",
+        "fr_before_vowel": "un petit nombre d'",
         "quant": "indet",
         "num": "plur",
         "eus": "gutxi",
@@ -37,6 +38,7 @@ var deters=[
     {
         // "fr": "du (1 part. indén. de) ",
         "fr": "une petite partie de ",
+        "fr_before_vowel": "une petite partie d'",
         // "fr": "un peu de ",
         "quant": "indet",
         "num": "sing",

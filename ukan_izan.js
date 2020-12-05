@@ -27,6 +27,7 @@ app.controller('myCtrl', function($scope) {
 	$scope.target_chunks = {"name1":"", "ordin1":"", "adj1":"", "verb":"", "name2":"", "adj2":"", "ordin2":""};
 
 	$scope.message = " Écrire la traduction. NB: l'ordre des mots n'est pas vérifié ici.";
+	$scope.fr_phrase = ""
 
 	$scope.check = function() {
 
@@ -86,6 +87,7 @@ app.controller('myCtrl', function($scope) {
 		$scope.shown_verb_tab = false;
 
 		$scope.message = " Écrire la traduction. NB: l'ordre des mots n'est pas vérifié ici.";
+		$scope.fr_phrase = ""
 
 		$scope.target = "";
 		$scope.target_chunks = {"name1":"", "suf_name1":"", "ordin1":"", "adj1":"", "verb":"", "name2":"", "suf_name2":"", "adj2":"", "ordin2":""};
@@ -115,6 +117,7 @@ app.controller('myCtrl', function($scope) {
 
 
 		if (!(name1_is_pronom)) {
+
 			var iRandom_deter1 = Math.floor((Math.random() * ($scope.deters.length)));
 			if (name1.fr_f && "fr_f" in deters[iRandom_deter1]) {
 				$scope.deter1 = deters[iRandom_deter1].fr_f;
@@ -144,11 +147,12 @@ app.controller('myCtrl', function($scope) {
 
 			
 
-
 			var iRandom_adj1 = Math.floor((Math.random() * (1+$scope.adjs.length)));
-			if (iRandom_adj1 == 0) {
+			if ((iRandom_adj1 == 0)||((iRandom_adj1>0)&&(adjs[iRandom_adj1-1].fr_post))) {
+				
 				$scope.adj1 = "";
-				if ((deters[iRandom_deter1].num == "sing") && ($scope.name1.match(vowelRegex)) && ("fr_before_vowel" in deters[iRandom_deter1])) {
+				// if ((deters[iRandom_deter1].num == "sing") && (($scope.name1.match(vowelRegex))||name1.fr_h_mute) && ("fr_before_vowel" in deters[iRandom_deter1])) {
+				if ((($scope.name1.match(vowelRegex))||name1.fr_h_mute) && ("fr_before_vowel" in deters[iRandom_deter1])) {
 					$scope.deter1 = deters[iRandom_deter1].fr_before_vowel;
 				};
 				if ($scope.name1.charAt(0)==$scope.name1.charAt(0).toUpperCase()) {				
@@ -159,7 +163,8 @@ app.controller('myCtrl', function($scope) {
 					}
 
 				};
-			} else {
+			};
+			if (iRandom_adj1>0) {
 				if (deters[iRandom_deter1].num == "plur") {
 					if (name1.fr_f) {
 						if ("fr_f_plur" in adjs[iRandom_adj1-1]) {
@@ -179,8 +184,15 @@ app.controller('myCtrl', function($scope) {
 						if ("fr_f" in adjs[iRandom_adj1-1]) {
 							$scope.adj1 = adjs[iRandom_adj1-1].fr_f;
 						} else {$scope.adj1 = adjs[iRandom_adj1-1].fr+"e";}
-					} else {$scope.adj1 = adjs[iRandom_adj1-1].fr;};
-					if (($scope.adj1.match(vowelRegex)) && ("fr_before_vowel" in deters[iRandom_deter1])) {
+					} else {
+						if ((($scope.name1.match(vowelRegex))||(name1.fr_h_mute)) && ("fr_before_vowel" in adjs[iRandom_adj1-1])) {
+							$scope.adj1 = adjs[iRandom_adj1-1].fr_before_vowel;
+						} else {
+							$scope.adj1 = adjs[iRandom_adj1-1].fr;};
+						};
+				};
+				if (!(adjs[iRandom_adj1-1].fr_post)){
+					if ((($scope.adj1.match(vowelRegex))||(adjs[iRandom_adj1-1].fr_h_mute)) && ("fr_before_vowel" in deters[iRandom_deter1])) {
 						$scope.deter1 = deters[iRandom_deter1].fr_before_vowel;
 					};
 				};
@@ -211,7 +223,7 @@ app.controller('myCtrl', function($scope) {
 		// $scope.verb = infinitif.fr;
 		$scope.verb = infinitif.fr_c[pers];
 
-		if ((pers == 0) && ($scope.verb.match(vowelRegex))) {
+		if ((pers == 0) && (($scope.verb.match(vowelRegex))||(infinitif.fr_h_mute))) {
 			$scope.name1 = "j'";
 		} else {
 			$scope.name1 += " ";			
@@ -303,10 +315,14 @@ app.controller('myCtrl', function($scope) {
 			}
 
 
+
+
 			var iRandom_adj2 = Math.floor((Math.random() * (1+$scope.adjs.length)));
-			if (iRandom_adj2 == 0) {
+			// if (iRandom_adj2 == 0) {
+			if ((iRandom_adj2 == 0)||((iRandom_adj2>0)&&(adjs[iRandom_adj2-1].fr_post))) {
 				$scope.adj2 = "";
-				if ((deters[iRandom_deter2].num == "sing") && ($scope.name2.match(vowelRegex)) && ("fr_before_vowel" in deters[iRandom_deter2])) {
+				// if ((deters[iRandom_deter2].num == "sing") && (($scope.name2.match(vowelRegex))||(name2.fr_h_mute)) && ("fr_before_vowel" in deters[iRandom_deter2])) {
+				if ((($scope.name2.match(vowelRegex))||(name2.fr_h_mute)) && ("fr_before_vowel" in deters[iRandom_deter2])) {
 					$scope.deter2 = deters[iRandom_deter2].fr_before_vowel;
 				};
 				if ($scope.name2.charAt(0)==$scope.name2.charAt(0).toUpperCase()) {
@@ -316,7 +332,8 @@ app.controller('myCtrl', function($scope) {
 						// if ($scope.target_chunks["suf_name2"]=="a") $scope.target_chunks["suf_name1"]="";
 					}
 				};
-			} else {
+			};
+			if (iRandom_adj2>0) {
 				if (deters[iRandom_deter2].num == "plur") {
 					if (name2.fr_f) {
 						if ("fr_f_plur" in adjs[iRandom_adj2-1]) {
@@ -336,8 +353,16 @@ app.controller('myCtrl', function($scope) {
 						if ("fr_f" in adjs[iRandom_adj2-1]) {
 							$scope.adj2 = adjs[iRandom_adj2-1].fr_f;
 						} else {$scope.adj2 = adjs[iRandom_adj2-1].fr+"e";}
-					} else {$scope.adj2 = adjs[iRandom_adj2-1].fr;};
-					if (($scope.adj2.match(vowelRegex)) && ("fr_before_vowel" in deters[iRandom_deter2])) {
+					} else {
+						if ((($scope.name2.match(vowelRegex))||(name2.fr_h_mute)) && ("fr_before_vowel" in adjs[iRandom_adj2-1])) {
+							$scope.adj2 = adjs[iRandom_adj2-1].fr_before_vowel;
+						} else {
+							$scope.adj2 = adjs[iRandom_adj2-1].fr;
+						};
+					};
+				};
+				if (!(adjs[iRandom_adj2-1].fr_post)){
+					if ((($scope.adj2.match(vowelRegex))||(adjs[iRandom_adj2-1].fr_h_mute)) && ("fr_before_vowel" in deters[iRandom_deter2])) {
 						$scope.deter2 = deters[iRandom_deter2].fr_before_vowel;
 					};
 				};
@@ -348,7 +373,30 @@ app.controller('myCtrl', function($scope) {
 			}
 		};
 
-		
+
+		///////// PREPARE THE FRENCH SENTENCE TO TRANSLATE		
+
+		$scope.fr_phrase = $scope.deter1;
+		if (($scope.adj1.length>0) && (!(adjs[iRandom_adj1-1].fr_post))) {
+			$scope.fr_phrase += $scope.adj1;
+		};
+		$scope.fr_phrase += $scope.name1;
+		if (($scope.adj1.length>0) && (adjs[iRandom_adj1-1].fr_post)) {
+			$scope.fr_phrase += $scope.adj1;
+		};
+		$scope.fr_phrase += $scope.verb;
+		$scope.fr_phrase += " ";
+		$scope.fr_phrase += $scope.deter2;
+		if (($scope.adj2.length>0) && (!(adjs[iRandom_adj2-1].fr_post))) {
+			$scope.fr_phrase += $scope.adj2;
+		};
+		$scope.fr_phrase += $scope.name2;
+		if (($scope.adj2.length>0) && (adjs[iRandom_adj2-1].fr_post)) {
+			$scope.fr_phrase += " ";
+			$scope.fr_phrase += $scope.adj2;
+		};
+		$scope.fr_phrase=$scope.fr_phrase.trim();
+
 
 
 		///////// CHANGE SUFFIXES OF GN1 IF NORK

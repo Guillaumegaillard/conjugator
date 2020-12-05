@@ -46,7 +46,8 @@ if __name__ == '__main__':
             if remaining_time:
                 remaining.append(line)
 
-    list_of_js=["essentials.js","voca1.js","ukan_izan.js"]
+    # list_of_js=["essentials.js","voca1.js","ukan_izan.js"]
+    list_of_js=["essentials.js","voca2.js","ukan_izan.js"]
 
     ext_css="""  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">\n"""
 
