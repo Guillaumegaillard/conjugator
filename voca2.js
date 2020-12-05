@@ -38,7 +38,7 @@ var names=[
     {'fr': 'neige', "fr_f": true, 'eus': 'elur', 'word_id': 79},
     {'fr': 'pluie', "fr_f": true, 'eus': 'euri', 'word_id': 80},
     {'fr': 'soleil', 'eus': 'eguski', 'word_id': 87, 'syns_eus': [124]},
-    {'fr': 'dieu du soleil', "plur_fr": "dieux du soleil", 'eus': 'Eki', 'word_id': 123},
+    {'fr': 'dieu du soleil', "plur_fr": "dieux du soleil", "pers_name": true, 'eus': 'Eki', 'word_id': 123},
     {'fr': 'soleil', 'eus': 'eki', 'word_id': 124, 'syns_eus': [87]},
     {'fr': 'nuage', 'eus': 'hodei', 'word_id': 88},
     {'fr': 'éclaircie', "fr_f": true, 'eus': 'ostarte', 'word_id': 89},
@@ -67,7 +67,7 @@ var names=[
     {'fr': 'brume', "fr_f": true, 'eus': 'langar', 'word_id': 113},
     // {'fr': 'brume et crachin', 'eus': 'langar-laino', 'word_id': 114},
     {'fr': 'feu', "plur_fr": "feux", 'eus': 'su', 'word_id': 117},
-    {'fr': 'dieu du ciel', "plur_fr": "dieux des cieux", 'eus': 'Ortzi', 'word_id': 120},
+    {'fr': 'dieu du ciel', "plur_fr": "dieux des cieux", "pers_name": true, 'eus': 'Ortzi', 'word_id': 120},
     {'fr': 'ciel', "plur_fr": "cieux", 'eus': 'ortzi', 'word_id': 121, 'syns_fr': [122]},
     {'fr': 'tonnerre', 'eus': 'ortzi', 'word_id': 122, 'syns_fr': [121]},
     {'fr': 'récolte', "fr_f": true, 'eus': 'uzta', 'word_id': 125},
@@ -123,7 +123,7 @@ var names=[
     {"fr": "février", "eus": "otsail"},
     {"fr": "mars", "plur_fr": "mars", "eus": "martxo"},
     {"fr": "avril", "eus": "apiril"},
-    {"fr": "mai", "eus": "maiatz"},
+    {"fr": "mai", "plur_fr": "mois de mai", "eus": "maiatz"},
     {"fr": "juin", "eus": "ekain"},
     {"fr": "juillet", "eus": "uztail"},
     {"fr": "août", "eus": "abuztu", 'word_id': 200, 'syns_eus': [201]},
@@ -132,9 +132,9 @@ var names=[
     {"fr": "octobre", "eus": "urri", 'word_id': 202},
     {"fr": "novembre", "eus": "azaro"},
     {"fr": "décembre", "eus": "abendu"},
-    {"fr": "Guillaume", "plur_fr": "Guillaume", "eus": "Guillaume"},
+    {"fr": "Guillaume", "pers_name": true, "plur_fr": "Guillaume", "eus": "Guillaume"},
     {"fr": "poisson", "eus": "arrain"},
-    {"fr": "Sonia", "plur_fr": "Sonia", "fr_f": true, "eus": "Sonia"},
+    {"fr": "Sonia", "plur_fr": "Sonia", "pers_name": true, "fr_f": true, "eus": "Sonia"},
     {"fr": "semaine", "fr_f": true, "eus": "aste", 'word_id': 58}
 
 ];

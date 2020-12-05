@@ -96,23 +96,24 @@ app.controller('myCtrl', function($scope) {
 
 
 		//////// NAME GROUP 1
-		var iRandom_name1 = Math.floor((Math.random() * (1+$scope.names.length)));
-		var name1_is_pronom;
-		var name1_is_prenom = false;
+		var pronom_proba=50; //percent
 		var name1;
-		if (iRandom_name1 == 0) {
-			name1_is_pronom=true;
+		var iRandom_name1 = 0;
+		var name1_is_proper_noun = false;
+
+		var name1_is_pronom = (Math.floor((Math.random() * 100))<pronom_proba);
+
+		if (name1_is_pronom) {
 			var iRandom_pron1 = Math.floor((Math.random() * ($scope.pronoms.length)));
 			name1 = pronoms[iRandom_pron1];
 		} else {
-			name1_is_pronom=false;
+			iRandom_name1 = 1+(Math.floor((Math.random() * ($scope.names.length))));
 			name1 = names[iRandom_name1-1];
 		}
 
 		$scope.name1 = name1.fr;
 		$scope.hints.push(name1);
 		$scope.target_chunks["name1"]=name1.eus;
-
 
 
 
@@ -156,11 +157,13 @@ app.controller('myCtrl', function($scope) {
 					$scope.deter1 = deters[iRandom_deter1].fr_before_vowel;
 				};
 				if ($scope.name1.charAt(0)==$scope.name1.charAt(0).toUpperCase()) {				
-					name1_is_prenom = true;
-					if (deters[iRandom_deter1].num == "sing") {
-						if (deters[iRandom_deter1].quant == "deter") $scope.deter1 = "";
-						// if ($scope.target_chunks["suf_name1"]=="a") $scope.target_chunks["suf_name1"]="";
-					}
+					name1_is_proper_noun = true;
+					if (name1.pers_name) {
+						if (deters[iRandom_deter1].num == "sing") {
+							if (deters[iRandom_deter1].quant == "deter") $scope.deter1 = "";
+							// if ($scope.target_chunks["suf_name1"]=="a") $scope.target_chunks["suf_name1"]="";
+						};
+					};
 
 				};
 			};
@@ -233,7 +236,7 @@ app.controller('myCtrl', function($scope) {
 		// NAME GROUP 2
 		var iRandom_name2 = Math.floor((Math.random() * (1+$scope.names.length)));
 		var name2_is_adj;
-		var name2_is_prenom = false;
+		var name2_is_proper_noun = false;
 		var name2;
 
 		if (iRandom_name2 == 0 && infinitif.trans) iRandom_name2=Math.floor((Math.random() * ($scope.names.length)))+1;
@@ -326,10 +329,12 @@ app.controller('myCtrl', function($scope) {
 					$scope.deter2 = deters[iRandom_deter2].fr_before_vowel;
 				};
 				if ($scope.name2.charAt(0)==$scope.name2.charAt(0).toUpperCase()) {
-					name2_is_prenom = true;
-					if (deters[iRandom_deter2].num == "sing") {
-						if (deters[iRandom_deter2].quant == "deter") $scope.deter2 = "";
-						// if ($scope.target_chunks["suf_name2"]=="a") $scope.target_chunks["suf_name1"]="";
+					name2_is_proper_noun = true;
+					if (name2.pers_name) {
+						if (deters[iRandom_deter2].num == "sing") {
+							if (deters[iRandom_deter2].quant == "deter") $scope.deter2 = "";
+							// if ($scope.target_chunks["suf_name2"]=="a") $scope.target_chunks["suf_name1"]="";
+						}
 					}
 				};
 			};
@@ -432,15 +437,15 @@ app.controller('myCtrl', function($scope) {
 		var last_is_vowel;
 
 
-		var name1_is_last_and_prenom = name1_is_prenom;
-		var name2_is_last_and_prenom = name2_is_prenom;
+		var name1_is_last_and_proper_noun = name1_is_proper_noun;
+		var name2_is_last_and_proper_noun = name2_is_proper_noun;
 
 		
 
 		if (($scope.target_chunks["ordin1"]=="bat")||(($scope.target_chunks["ordin1"].length>0)&&(deters[iRandom_deter1].quant == "indet"))) {
 			bat1=true;
 			$scope.target+=$scope.target_chunks["name1"];
-			name1_is_last_and_prenom=false;
+			name1_is_last_and_proper_noun=false;
 		} else {
 			if ($scope.target_chunks["ordin1"].length > 0){
 				$scope.target+=$scope.target_chunks["ordin1"];
@@ -451,7 +456,7 @@ app.controller('myCtrl', function($scope) {
 		
 		// adj bears suffix unless bat
 		if ($scope.target_chunks["adj1"].length > 0){
-			name1_is_last_and_prenom=false;
+			name1_is_last_and_proper_noun=false;
 			$scope.target+=" ";
 			$scope.target+=$scope.target_chunks["adj1"];
 		};
@@ -469,7 +474,7 @@ app.controller('myCtrl', function($scope) {
 			} else {
 				if (!(name1_is_pronom)){
 					lastchar=$scope.target.slice(-1);
-					if (name1_is_last_and_prenom){
+					if (name1_is_last_and_proper_noun){
 						if ($scope.target_chunks["suf_name1"]=="a") $scope.target_chunks["suf_name1"]="";
 						// if ($scope.target_chunks["suf_name1"]=="ak") $scope.target_chunks["suf_name1"]="ak";
 						if (infinitif.trans) {
@@ -492,7 +497,7 @@ app.controller('myCtrl', function($scope) {
 							$scope.target+="k";
 						// else -a if already a + suf
 						} else {
-							if ((lastchar=="a")&&(!(name1_is_last_and_prenom))) $scope.target=$scope.target.slice(0,-1);
+							if ((lastchar=="a")&&(!(name1_is_last_and_proper_noun))) $scope.target=$scope.target.slice(0,-1);
 							$scope.target+=$scope.target_chunks["suf_name1"];
 						}
 					};
@@ -506,7 +511,7 @@ app.controller('myCtrl', function($scope) {
 		if (($scope.target_chunks["ordin2"]=="bat")||(($scope.target_chunks["ordin2"].length>0)&&(deters[iRandom_deter2].quant == "indet"))) {
 			bat2=true;
 			$scope.target+=$scope.target_chunks["name2"];
-			name2_is_last_and_prenom=false;
+			name2_is_last_and_proper_noun=false;
 		} else {
 			if ($scope.target_chunks["ordin2"].length > 0){
 				$scope.target+=$scope.target_chunks["ordin2"];
@@ -516,7 +521,7 @@ app.controller('myCtrl', function($scope) {
 		};
 		
 		if ($scope.target_chunks["adj2"].length > 0){
-			name2_is_last_and_prenom=false;
+			name2_is_last_and_proper_noun=false;
 			$scope.target+=" ";
 			$scope.target+=$scope.target_chunks["adj2"];
 		};
@@ -527,13 +532,13 @@ app.controller('myCtrl', function($scope) {
 
 		if ($scope.target_chunks["suf_name2"].length > 0){
 			lastchar=$scope.target.slice(-1);
-			if (name2_is_last_and_prenom){
+			if (name2_is_last_and_proper_noun){
 				if ($scope.target_chunks["suf_name2"]=="a") $scope.target_chunks["suf_name2"]="";
 				if (($scope.target_chunks["suf_name2"]=="ak")&&(lastchar=="a")) $scope.target_chunks["suf_name2"]="k";
 			};
 			if ($scope.target_chunks["suf_name2"].length > 0){
 				if (lastchar=="r") $scope.target+="r";
-				if ((!(name2_is_last_and_prenom))&&(lastchar=="a")) $scope.target=$scope.target.slice(0,-1);
+				if ((!(name2_is_last_and_proper_noun))&&(lastchar=="a")) $scope.target=$scope.target.slice(0,-1);
 				$scope.target+=$scope.target_chunks["suf_name2"];
 			};
 		};
