@@ -25,6 +25,7 @@
       <button ng-click="newHint()">Aide Vocabulaire</button>
       <button ng-click="show_verb_tab()">Aide Conjugaison</button>
       <button ng-click="correction()">Correction</button>
+      <button ng-click="solutions()">Toutes les solutions</button>
 
     	<p>
         <input  ng-class="check()==1?'bg-success-light':'bg-danger-light'" type="text" class="bigText" ng-model="client_input"   ng-keydown="validate($event)" >
@@ -48,7 +49,8 @@
 
       <ul>
         <li ng-repeat="x in shownHints">
-          {{ x.fr.trim() + ': ' + x.eus }}
+          {{ x }}
+          <!-- {{ x.fr.trim() + ': ' + x.eus }} -->
         </li>
       </ul>
     </div>
@@ -67,7 +69,7 @@
     </div>
   </div>
     <div>
-      Ukan_Izan version 1.17
+      Ukan_Izan version 1.18
     </div>
 </div>
 </body>

@@ -7,12 +7,12 @@ var names=[
     {'fr': 'lettre', "fr_f": true, 'eus': 'letra', 'word_id': 207},
     {'fr': 'mot', 'eus': 'hitz', 'word_id': 208},
     {'fr': 'nom', 'eus': 'izen', 'word_id': 209},
-    {'fr': 'exemple', 'eus': 'adibide', 'word_id': 9},
-    {'fr': 'T mouillé', 'eus': 't soinu', 'word_id': 11},
-    {'fr': 'son', 'eus': 'soinu', 'word_id': 12},
-    {'fr': 'présentation', "fr_f": true, 'eus': 'aurkezpen', 'word_id': 14},
-    {'fr': 'vie', "fr_f": true, 'eus': 'bizi', 'word_id': 15},
-    {'fr': 'Bretagne', "fr_f": true, 'eus': 'Bretainia', 'word_id': 17},
+    {'fr': 'exemple', 'eus': 'adibide', 'word_id': 177},
+    {'fr': 'T mouillé', 'eus': 't soinu', 'word_id': 178},
+    {'fr': 'son', 'eus': 'soinu', 'word_id': 179},
+    {'fr': 'présentation', "fr_f": true, 'eus': 'aurkezpen', 'word_id': 180},
+    {'fr': 'vie', "fr_f": true, 'eus': 'bizi', 'word_id': 181},
+    {'fr': 'Bretagne', "fr_f": true, 'eus': 'Bretainia', 'word_id': 182},
     {'fr': 'pardon', 'eus': 'barkatu', 'word_id': 36},
     {'fr': 'regret', 'eus': 'damu', 'word_id': 37},
     {'fr': 'merci', 'eus': 'eskerrik asko', 'word_id': 40},
@@ -43,7 +43,7 @@ var names=[
     {'fr': 'nuage', 'eus': 'hodei', 'word_id': 88},
     {'fr': 'éclaircie', "fr_f": true, 'eus': 'ostarte', 'word_id': 89},
     {'fr': 'tâche', "fr_f": true, 'eus': 'ari', 'word_id': 90, 'syns_fr': [91, 92]},
-    {'fr': 'ocupation', "fr_f": true, 'eus': 'ari', 'word_id': 91, 'syns_fr': [90, 92]},
+    {'fr': 'occupation', "fr_f": true, 'eus': 'ari', 'word_id': 91, 'syns_fr': [90, 92]},
     {'fr': 'travail', "plur_fr": "travaux", 'eus': 'ari', 'word_id': 92, 'syns_fr': [90, 91]},
     {'fr': 'brouillard bas', "plur_fr": "brouillards bas", 'eus': 'behe-laino', 'word_id': 93},
     {'fr': 'ciel dégagé', "plur_fr": "cieux dégagés", 'eus': 'oskarbi', 'word_id': 95},
@@ -132,11 +132,15 @@ var names=[
     {"fr": "octobre", "eus": "urri", 'word_id': 202},
     {"fr": "novembre", "eus": "azaro"},
     {"fr": "décembre", "eus": "abendu"},
+    
+    {"fr": "étranger", "eus": "kanpotar", 'word_id': 170, 'syns_eus': [171]},
+    {"fr": "étranger", "eus": "arrotz", 'word_id': 171, 'syns_fr': [173], 'syns_eus': [170]},
+    {"fr": "hôte", "fr_h_mute":true, "eus": "arrotz", 'word_id': 173, 'syns_fr': [171]},
+
     {"fr": "Guillaume", "pers_name": true, "plur_fr": "Guillaume", "eus": "Guillaume"},
     {"fr": "poisson", "eus": "arrain"},
     {"fr": "Sonia", "plur_fr": "Sonia", "pers_name": true, "fr_f": true, "eus": "Sonia"},
     {"fr": "semaine", "fr_f": true, "eus": "aste", 'word_id': 58}
-
 ];
 //"fr_f_plur"
 
@@ -146,7 +150,7 @@ var adjs=[
     {'fr': 'difficile', 'fr_post': true, "fr_f": "difficile", 'eus': 'zail', 'word_id': 146},
     {'fr': 'vrai', 'eus': 'egia', 'word_id': 143},
     {'fr': 'faux', "plur_fr": "faux", "fr_f": "fausse", 'eus': 'gezur', 'word_id': 144},
-    {'fr': 'vivant', 'fr_post': true, 'eus': 'bizi', 'word_id': 16},
+    {'fr': 'vivant', 'fr_post': true, 'eus': 'bizi', 'word_id': 183},
     {'fr': 'premier', "fr_f": "première", 'eus': 'lehen', 'word_id': 162},
     {'fr': 'dernier', "fr_f": "dernière", 'eus': 'azken', 'word_id': 165},
     {'fr': 'bon', "fr_f": "bonne", 'eus': 'on', 'word_id': 84},
@@ -158,12 +162,15 @@ var adjs=[
     {'fr': 'peu abondant', 'fr_post': true, 'eus': 'urri', 'word_id': 126},
     {'fr': 'froid', 'fr_post': true, 'eus': 'hotz', 'word_id': 81},
     {'fr': 'chaud', 'fr_post': true, 'eus': 'bero', 'word_id': 82},
-    {"fr": "beau", "fr_before_vowel": "bel", "plur_fr": "beaux", "fr_f": "belle", "eus": "polita"},
+    {"fr": "beau", "fr_before_vowel": "bel", "plur_fr": "beaux", "fr_f": "belle", "eus": "polit"},
     {"fr": "petit","eus": "txiki"},
     {"fr": "grand", "eus": "haundi"},
     {'fr': 'habituel', 'fr_post': true, "fr_f": "habituelle", "fr_h_mute":true, 'eus': 'ohiko', 'word_id': 166},
     {'fr': 'obligatoire', 'fr_post': true, "fr_f": "obligatoire", 'eus': 'beharrezko', 'word_id': 167},
-    {'fr': 'lent', 'fr_post': true, 'eus': 'motel', 'word_id': 168}
+    {'fr': 'lent', 'fr_post': true, 'eus': 'motel', 'word_id': 168},
+    {"fr": "étranger", "fr_f": "étrangère", 'fr_post': true, "eus": "kanpotar", 'word_id': 174, 'syns_eus': [175]},
+    {"fr": "étranger", "fr_f": "étrangère", 'fr_post': true, "eus": "arrotz", 'word_id': 175, 'syns_fr': [176], 'syns_eus': [174]},
+    {"fr": "bizarre", "fr_f": "bizarre", 'fr_post': true, "eus": "arrotz", 'word_id': 176, 'syns_fr': [175]},    
 ];
 
 // {'fr': "d'accord", 'eus': 'ados', 'word_id': 135},

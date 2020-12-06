@@ -194,9 +194,12 @@ app.controller('myCtrl', function($scope) {
 					if (deters[iRandom_deter1].quant == "indet") $scope.target_chunks[i]["ordin1"]=deters[iRandom_deter1].eus;
 				}
 			};
-			if (deters[iRandom_deter1].quant == "ordin") {
+			// if (deters[iRandom_deter1].quant == "ordin") {
+			// 	$scope.hints.push(deters[iRandom_deter1]);
+			// 	// TODO: deters may have syns_eus => ordin or fake ordin, e.g. gutxi, huts; Others?
+			if ("eus" in deters[iRandom_deter1]) {
 				$scope.hints.push(deters[iRandom_deter1]);
-				// TODO: deters may have syns_eus => ordin or fake ordin, e.g. gutxi, huts; Others?
+
 				for (i = 0; i < target_len; i++) { 
 					$scope.target_chunks[i]["ordin1"]=deters[iRandom_deter1].eus;
 				};
@@ -229,7 +232,7 @@ app.controller('myCtrl', function($scope) {
 
 
 			}
-			if (deters[iRandom_deter1].quant == "indet") $scope.hints.push(deters[iRandom_deter1]);
+			// if (deters[iRandom_deter1].quant == "indet") $scope.hints.push(deters[iRandom_deter1]);
 
 			target_len=$scope.targets.length;
 
@@ -485,14 +488,14 @@ app.controller('myCtrl', function($scope) {
 					for (i = 0; i < target_len; i++) { 
 						$scope.target_chunks[i]["ordin2"]=deters[iRandom_deter2].eus;
 					};
-					if ( (name1_is_pronom) || ( (!(name1_is_pronom)) && (iRandom_deter1!=iRandom_deter2) )) {
-						if ("word_id" in deters[iRandom_deter2]) {
-							var index = $scope.hints.findIndex(x => x.word_id==deters[iRandom_deter2].word_id); 
-							if (index === -1) $scope.hints.push(deters[iRandom_deter2]);
-						} else {
-							$scope.hints.push(deters[iRandom_deter2]);
-						}
-					};
+					// if ( (name1_is_pronom) || ( (!(name1_is_pronom)) && (iRandom_deter1!=iRandom_deter2) )) {
+					// 	if ("word_id" in deters[iRandom_deter2]) {
+					// 		var index = $scope.hints.findIndex(x => x.word_id==deters[iRandom_deter2].word_id); 
+					// 		if (index === -1) $scope.hints.push(deters[iRandom_deter2]);
+					// 	} else {
+					// 		$scope.hints.push(deters[iRandom_deter2]);
+					// 	}
+					// };
 
 					if (Math.floor((Math.random() *2))>0) {
 						$scope.deter2 = "les "+$scope.deter2;
@@ -512,14 +515,14 @@ app.controller('myCtrl', function($scope) {
 					if (deters[iRandom_deter2].quant == "deter") $scope.target_chunks[i]["suf_name2"]="a";
 				};
 				if (deters[iRandom_deter2].quant == "ordin") {
-					if ( (name1_is_pronom) || ( (!(name1_is_pronom)) && (iRandom_deter1!=iRandom_deter2) )) {
-						if ("word_id" in deters[iRandom_deter2]) {
-							var index = $scope.hints.findIndex(x => x.word_id==deters[iRandom_deter2].word_id); 
-							if (index === -1) $scope.hints.push(deters[iRandom_deter2]);
-						} else {
-							$scope.hints.push(deters[iRandom_deter2]);
-						}
-					};
+					// if ( (name1_is_pronom) || ( (!(name1_is_pronom)) && (iRandom_deter1!=iRandom_deter2) )) {
+					// 	if ("word_id" in deters[iRandom_deter2]) {
+					// 		var index = $scope.hints.findIndex(x => x.word_id==deters[iRandom_deter2].word_id); 
+					// 		if (index === -1) $scope.hints.push(deters[iRandom_deter2]);
+					// 	} else {
+					// 		$scope.hints.push(deters[iRandom_deter2]);
+					// 	}
+					// };
 					for (i = 0; i < target_len; i++) { 
 						$scope.target_chunks[i]["ordin2"]=deters[iRandom_deter2].eus;
 					};
@@ -528,7 +531,8 @@ app.controller('myCtrl', function($scope) {
 					if (deters[iRandom_deter2].quant == "indet") $scope.target_chunks[i]["ordin2"]=deters[iRandom_deter2].eus;
 				};
 			};
-			if (deters[iRandom_deter2].quant == "indet") {
+			// if (deters[iRandom_deter2].quant == "indet") {
+			if ("eus" in deters[iRandom_deter2]) {
 				// $scope.hints.push(deters[iRandom_deter2]);
 				if ( (name1_is_pronom) || ( (!(name1_is_pronom)) && (iRandom_deter1!=iRandom_deter2) )) {
 					if ("word_id" in deters[iRandom_deter2]) {
@@ -538,9 +542,9 @@ app.controller('myCtrl', function($scope) {
 						$scope.hints.push(deters[iRandom_deter2]);
 					};
 				};
-			};
+			// };
 
-			if (deters[iRandom_deter2].quant == "ordin") {
+			// if (deters[iRandom_deter2].quant == "ordin") {
 				// TODO: deters may have syns_eus => ordin or fake ordin, e.g. gutxi, huts; Others? gutxi not considered
 				if ("syns_eus" in deters[iRandom_deter2]){
 					var syn_id=0;
@@ -851,15 +855,36 @@ app.controller('myCtrl', function($scope) {
 			$scope.target+=".";
 
 			$scope.client_input = "";
+
 			$scope.num_hints=$scope.hints.length;
 
 			$scope.targets[i]=$scope.target;
 		};
 
+		$scope.reduceHints();
+		$scope.num_hints=$scope.hints.length;
 
 	};
 
-	
+	$scope.reduceHints = function(){
+		var reducedHints=[];
+		reducedHints.push($scope.hints[0].fr.trim() + ': ' + $scope.hints[0].eus);
+		if ($scope.hints.length>1) {
+			var j=1;
+			var i=1;
+			for (i ; i < $scope.hints.length; i++) { 
+				if ($scope.hints[i].fr==$scope.hints[i-1].fr){
+					reducedHints[j-1]+=", ";
+					reducedHints[j-1]+=$scope.hints[i].eus;
+				} else {
+					reducedHints.push($scope.hints[i].fr.trim() + ': ' + $scope.hints[i].eus);
+					j++;
+				};
+			};
+		};
+		$scope.hints=reducedHints;
+
+	};
 
 	$scope.newHint = function(){
 		if ($scope.num_hints>0) {
@@ -869,8 +894,12 @@ app.controller('myCtrl', function($scope) {
 	};
 
 	$scope.correction = function(){
-		$scope.shown_solutions = true;		
+		$scope.message = $scope.targets[0];		
 	};
+
+	$scope.solutions = function(){
+		$scope.shown_solutions = true;		
+	};	
 
 	$scope.show_verb_tab = function(){
 		$scope.shown_verb_tab = true;
