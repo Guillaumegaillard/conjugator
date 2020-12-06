@@ -361,11 +361,13 @@ app.controller('myCtrl', function($scope) {
 			name2_is_adj=true;
 			var iRandom_adj2 = Math.floor((Math.random() * ($scope.adjs.length)));
 			name2 = adjs[iRandom_adj2];
-			if (!("word_id" in name2)){
-				if (iRandom_adj2!=iRandom_adj1-1) $scope.hints.push(name2);
-			} else {
-				var index = $scope.hints.findIndex(x => x.word_id==name2.word_id); 
-				if (index === -1) $scope.hints.push(name2);
+			if (iRandom_adj2!=iRandom_adj1-1) {
+				if (!("word_id" in name2)){
+					$scope.hints.push(name2);
+				} else {
+					var index = $scope.hints.findIndex(x => x.word_id==name2.word_id); 
+					if (index === -1) $scope.hints.push(name2);
+				}
 			};
 
 
@@ -403,11 +405,13 @@ app.controller('myCtrl', function($scope) {
 			name2 = names[iRandom_name2-1];
 			$scope.name2 = name2.fr;
 			
-			if (!("word_id" in name2)){
-				if (iRandom_name2!=iRandom_name1) $scope.hints.push(name2);
-			} else {
-				var index = $scope.hints.findIndex(x => x.word_id==name2.word_id); 
-				if (index === -1) $scope.hints.push(name2);
+			if (iRandom_name2!=iRandom_name1) {
+				if (!("word_id" in name2)){
+					$scope.hints.push(name2);
+				} else {
+					var index = $scope.hints.findIndex(x => x.word_id==name2.word_id); 
+					if (index === -1) $scope.hints.push(name2);
+				}
 			};
 			// if (iRandom_name2!=iRandom_name1) $scope.hints.push(name2);
 		};
@@ -604,11 +608,13 @@ app.controller('myCtrl', function($scope) {
 				};
 				$scope.adj2+=" "
 				// if (iRandom_adj2!=iRandom_adj1) $scope.hints.push(adjs[iRandom_adj2-1]);
-				if ("word_id" in adjs[iRandom_adj2-1]) {
-					var index = $scope.hints.findIndex(x => x.word_id==adjs[iRandom_adj2-1].word_id); 
-					if (index === -1) $scope.hints.push(adjs[iRandom_adj2-1]);
-				} else {
-					$scope.hints.push(adjs[iRandom_adj2-1]);
+				if (iRandom_adj2!=iRandom_adj1) {
+					if ("word_id" in adjs[iRandom_adj2-1]) {
+						var index = $scope.hints.findIndex(x => x.word_id==adjs[iRandom_adj2-1].word_id); 
+						if (index === -1) $scope.hints.push(adjs[iRandom_adj2-1]);
+					} else {
+						$scope.hints.push(adjs[iRandom_adj2-1]);
+					}
 				};
 
 
