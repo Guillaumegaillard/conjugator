@@ -342,11 +342,26 @@ app.controller('myCtrl', function($scope) {
 		// $scope.verb = infinitif.fr;
 		$scope.verb = infinitif.fr_c[pers];
 
-		if ((pers == 0) && (($scope.verb.match(vowelRegex))||(infinitif.fr_h_mute))) {
-			$scope.name1 = "j'";
+		var negative=false;
+		if (Math.floor((Math.random() *2))>0) negative=true;
+
+		if (negative) {
+			$scope.name1 += " ";
+
+			if (($scope.verb.match(vowelRegex))||(infinitif.fr_h_mute)) {
+				$scope.verb="n'"+$scope.verb+" pas"
+			} else {
+				$scope.verb="ne "+$scope.verb+" pas"
+			}
 		} else {
-			$scope.name1 += " ";			
+			if ((pers == 0) && (($scope.verb.match(vowelRegex))||(infinitif.fr_h_mute))) {
+				$scope.name1 = "j'";
+			} else {
+				$scope.name1 += " ";			
+			}
 		};
+
+
 
 
 		// NAME GROUP 2
@@ -784,6 +799,13 @@ app.controller('myCtrl', function($scope) {
 			};
 			$scope.target+=" ";
 
+			if (negative) {
+				// verb
+				$scope.target+="ez ";
+				$scope.target+=$scope.target_chunks[i]["verb"];
+				$scope.target+=" ";
+			};
+
 			//GN2 ###################################################################################
 			// if ($scope.target_chunks[i]["ordin2"]=="bat"){
 			if (($scope.target_chunks[i]["ordin2"]=="bat")||(($scope.target_chunks[i]["ordin2"].length>0)&&(deters[iRandom_deter2].quant == "indet"))) {
@@ -821,9 +843,11 @@ app.controller('myCtrl', function($scope) {
 				};
 			};
 
-			// verb
-			$scope.target+=" ";
-			$scope.target+=$scope.target_chunks[i]["verb"];
+			if (!(negative)) {
+				// verb
+				$scope.target+=" ";
+				$scope.target+=$scope.target_chunks[i]["verb"];
+			};
 			$scope.target+=".";
 
 			$scope.client_input = "";
