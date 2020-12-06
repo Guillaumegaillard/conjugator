@@ -32,6 +32,17 @@
       	&nbsp;{{message | capitalize}}
       </p>
 
+    <div ng-show="shown_solutions">
+      <label>Solution(s) :</label>
+
+      <ul>
+        <li ng-repeat="x in targets track by $index ">
+          {{ x | capitalize }}
+        </li>
+      </ul>
+    </div>
+
+
     <div>
       <label>Encore {{num_hints}} aides voca possibles...</label>
 
@@ -56,7 +67,7 @@
     </div>
   </div>
     <div>
-      Ukan_Izan version 1.14
+      Ukan_Izan version 1.15
     </div>
 </div>
 </body>
