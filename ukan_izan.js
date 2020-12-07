@@ -257,6 +257,7 @@ app.controller('myCtrl', function($scope) {
 			target_len=$scope.targets.length;
 
 			var iRandom_adj1 = Math.floor((Math.random() * (1+$scope.adjs.length)));
+			iRandom_adj1 *= Math.floor(Math.random() * 2); //1 adj1 out of 2 non pronom sentences 
 			if ((iRandom_adj1 == 0)||((iRandom_adj1>0)&&(adjs[iRandom_adj1-1].fr_post))) {
 				
 				$scope.adj1 = "";
@@ -614,6 +615,7 @@ app.controller('myCtrl', function($scope) {
 			target_len=$scope.targets.length;
 
 			var iRandom_adj2 = Math.floor((Math.random() * (1+$scope.adjs.length)));
+			iRandom_adj2 *= Math.floor(Math.random() * 2);
 			// if (iRandom_adj2 == 0) {
 			if ((iRandom_adj2 == 0)||((iRandom_adj2>0)&&(adjs[iRandom_adj2-1].fr_post))) {
 				$scope.adj2 = "";
