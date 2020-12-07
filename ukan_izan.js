@@ -1,6 +1,8 @@
 var app = angular.module('myApp', []);
 
 app.controller('myCtrl', function($scope) {
+
+	var deters=dets.concat(indets,ordins);
 	$scope.verbs = verbs;
 	$scope.deters = deters;
 	$scope.names = names;
@@ -165,8 +167,26 @@ app.controller('myCtrl', function($scope) {
 
 
 		if (!(name1_is_pronom)) {
+			// var iRandom_deter1 = Math.floor((Math.random() * ($scope.deters.length)));
+			var iRandom_deter1;
+			// det, indet, ordin sg or ordin plur?
+			var deter1_family = Math.floor((Math.random() * 4));
+			var ordin_sgs = 1;
+			switch (deter1_family){
+				case 0:
+					iRandom_deter1 = Math.floor((Math.random() * (dets.length)));
+					break;
+				case 1:
+					iRandom_deter1 = dets.length + Math.floor((Math.random() * (indets.length)));
+					break;
+				case 2:
+					iRandom_deter1 = dets.length + indets.length + Math.floor((Math.random() * ordin_sgs));
+					break;
+				case 3:
+					iRandom_deter1 = dets.length + indets.length + ordin_sgs + Math.floor((Math.random() * (ordins.length-ordin_sgs)));
+					break;
+			};
 
-			var iRandom_deter1 = Math.floor((Math.random() * ($scope.deters.length)));
 			if (name1.fr_f && "fr_f" in deters[iRandom_deter1]) {
 				$scope.deter1 = deters[iRandom_deter1].fr_f;
 			} else {
@@ -477,7 +497,26 @@ app.controller('myCtrl', function($scope) {
 
 
 		if (!(name2_is_adj)) {
-			var iRandom_deter2 = Math.floor((Math.random() * ($scope.deters.length)));
+			// var iRandom_deter2 = Math.floor((Math.random() * ($scope.deters.length)));
+			var iRandom_deter2;
+			// det, indet, ordin sg or ordin plur?
+			var deter2_family = Math.floor((Math.random() * 4));
+			var ordin_sgs = 1;
+			switch (deter2_family){
+				case 0:
+					iRandom_deter2 = Math.floor((Math.random() * (dets.length)));
+					break;
+				case 1:
+					iRandom_deter2 = dets.length + Math.floor((Math.random() * (indets.length)));
+					break;
+				case 2:
+					iRandom_deter2 = dets.length + indets.length + Math.floor((Math.random() * ordin_sgs));
+					break;
+				case 3:
+					iRandom_deter2 = dets.length + indets.length + ordin_sgs + Math.floor((Math.random() * (ordins.length-ordin_sgs)));
+					break;
+			};
+
 			if (name2.fr_f && "fr_f" in deters[iRandom_deter2]) {
 				$scope.deter2 = deters[iRandom_deter2].fr_f;
 			} else {

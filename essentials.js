@@ -1,61 +1,42 @@
-var deters=[
+var dets=[
     {"fr": "le ","fr_f": "la ","fr_before_vowel": "l'","quant": "deter","num": "sing"},
-    {"fr": "les ","quant": "deter","num": "plur"},    
+    {"fr": "les ","quant": "deter","num": "plur"},
+];
+
+var indets=[
     {"fr": "quelques ","quant": "indet","num": "plur","eus": "zenbait"},    
     {"fr": "peu d'un ","fr_f": "peu d'une ","quant": "indet","num": "sing","eus": "gutxi"},
-// "fr": "du (1 part. indén. de) ",
-// "fr_before_vowel": "peu de l'",
-// "fr": "peu de ",
-    {
-        "fr": "un petit nombre de ","fr_before_vowel": "un petit nombre d'","quant": "indet","num": "plur",
-        "eus": "gutxi"
-    },
-    {
-        "fr": "une petite partie de ","fr_before_vowel": "une petite partie d'","quant": "indet","num": "sing",
-        "eus": "pixka bat"
-    },
+    // "fr": "du (1 part. indén. de) ", "fr_before_vowel": "peu de l'", "fr": "peu de ", "fr": "un peu de ",
+    // {   "fr": "du ","fr_f": "de la ","fr_before_vowel": "de l'","quant": "indet","num": "sing"},    
+    {   "fr": "un petit nombre de ","fr_before_vowel": "un petit nombre d'","quant": "indet","num": "plur",
+        "eus": "gutxi"},
+    {   "fr": "une petite partie de ","fr_before_vowel": "une petite partie d'","quant": "indet","num": "sing",
+        "eus": "pixka bat"},
 
-    {
-        "fr": "de nombreux ","fr_f": "de nombreuses ","quant": "indet","num": "plur","eus": "asko", 
+    {   "fr": "de nombreux ","fr_f": "de nombreuses ","quant": "indet","num": "plur","eus": "asko", 
         'word_id': 9, 'syns_eus': [12,15]},
-    {
-        "fr": "une grande partie de ","fr_before_vowel": "une grande partie d'","quant": "indet","num": "sing","eus": "asko", 
+    {   "fr": "une grande partie de ","fr_before_vowel": "une grande partie d'","quant": "indet","num": "sing","eus": "asko", 
         'word_id': 10, 'syns_eus': [13,16]},
-    {
-        "fr": "beaucoup d'un ","fr_f": "beaucoup d'une ","quant": "indet","num": "sing","eus": "asko", 
+    {   "fr": "beaucoup d'un ","fr_f": "beaucoup d'une ","quant": "indet","num": "sing","eus": "asko", 
         'word_id': 11, 'syns_eus': [14,17]},
 
-    {
-        "fr": "de nombreux ","fr_f": "de nombreuses ","quant": "indet","num": "plur","eus": "anitz", 
+    {   "fr": "de nombreux ","fr_f": "de nombreuses ","quant": "indet","num": "plur","eus": "anitz", 
         'word_id': 12, 'syns_eus': [9,15]},
-    {
-        "fr": "une grande partie de ","fr_before_vowel": "une grande partie d'","quant": "indet","num": "sing","eus": "anitz", 
+    {   "fr": "une grande partie de ","fr_before_vowel": "une grande partie d'","quant": "indet","num": "sing","eus": "anitz", 
         'word_id': 13, 'syns_eus': [10,16]},
-    {
-        "fr": "beaucoup d'un ","fr_f": "beaucoup d'une ","quant": "indet","num": "sing","eus": "anitz", 
+    {   "fr": "beaucoup d'un ","fr_f": "beaucoup d'une ","quant": "indet","num": "sing","eus": "anitz", 
         'word_id': 14, 'syns_eus': [11,17]},
 
-    {
-        "fr": "de nombreux ","fr_f": "de nombreuses ","quant": "indet","num": "plur","eus": "hanitx", 
+    {   "fr": "de nombreux ","fr_f": "de nombreuses ","quant": "indet","num": "plur","eus": "hanitx", 
         'word_id': 15, 'syns_eus': [9,12]},
-    {
-        "fr": "une grande partie de ","fr_before_vowel": "une grande partie d'","quant": "indet","num": "sing","eus": "hanitx", 
+    {   "fr": "une grande partie de ","fr_before_vowel": "une grande partie d'","quant": "indet","num": "sing","eus": "hanitx", 
         'word_id': 16, 'syns_eus': [10,13]},
-    {
-        "fr": "beaucoup d'un ","fr_f": "beaucoup d'une ","quant": "indet","num": "sing","eus": "hanitx", 
+    {   "fr": "beaucoup d'un ","fr_f": "beaucoup d'une ","quant": "indet","num": "sing","eus": "hanitx", 
         'word_id': 17, 'syns_eus': [11,14]},
-
-// "fr": "un peu de ",
-    // {
-    //     // "fr": "du (1 part. indén. de) ",
-    //     "fr": "du ",
-    //     "fr_f": "de la ",
-    //     "fr_before_vowel": "de l'",
-    //     "quant": "indet",
-    //     "num": "sing",
-    // },    
+];
+var ordins=[
+    {"fr": "un ","fr_f": "une ","eus": "bat","quant": "ordin","num": "sing"},
     {"fr": "trois ","eus": "hiru","quant": "ordin","num": "plur"},
-    {"fr": "un ","fr_f": "une ","eus": "bat","quant": "ordin","num": "sing"}
 ];
 
 var pronoms=[
