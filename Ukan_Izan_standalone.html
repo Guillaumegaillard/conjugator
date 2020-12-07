@@ -14,6 +14,7 @@
     
     var indets=[
         {"fr": "quelques ","quant": "indet","num": "plur","eus": "zenbait"},    
+        {"fr": "plusieurs ","quant": "indet","num": "plur","eus": "batzuk"},    
         {"fr": "peu d'un ","fr_f": "peu d'une ","quant": "indet","num": "sing","eus": "gutxi"},
         // "fr": "du (1 part. indén. de) ", "fr_before_vowel": "peu de l'", "fr": "peu de ", "fr": "un peu de ",
         // {   "fr": "du ","fr_f": "de la ","fr_before_vowel": "de l'","quant": "indet","num": "sing"},    
@@ -55,7 +56,7 @@
         {"fr": "elle", "fr_f": true, "eus": "bera", "fr_pers":2, 'word_id': 2, 'syns_fr': [6], 'syns_eus': [4]},
         {"fr": "elles", "plur": true, "fr_f": true, "eus": "haiek", "fr_pers":5, 'word_id': 3, 'syns_fr': [7], 'syns_eus': [1]},
         {"fr": "elle", "fr_f": true, "eus": "hura", "fr_pers":2, 'word_id': 4, 'syns_fr': [6], 'syns_eus': [2]},
-        {"fr": "ils", "plur": true, "eus": "beraiek", "fr_pers":5, 'word_id': 5, 'syns_fr': [1], 'syns_eus': [3]},
+        {"fr": "ils", "plur": true, "eus": "beraiek", "fr_pers":5, 'word_id': 5, 'syns_fr': [1], 'syns_eus': [7]},
         {"fr": "il", "eus": "bera", "fr_pers":2, 'word_id': 6, 'syns_fr': [2], 'syns_eus': [4]},
         {"fr": "ils", "plur": true, "eus": "haiek", "fr_pers":5, 'word_id': 7, 'syns_fr': [3], 'syns_eus': [5]},
         {"fr": "il", "eus": "hura", "fr_pers":2, 'word_id': 8, 'syns_fr': [2], 'syns_eus': [6]},
@@ -121,7 +122,7 @@
         {'fr': 'météo', "fr_f": true, 'eus': 'eguraldi', 'word_id': 73},
         {'fr': 'période', "fr_f": true, 'eus': 'aldi', 'word_id': 74, 'syns_fr': [75, 76]},
         {'fr': 'fois', "plur_fr": "fois", "fr_f": true, 'eus': 'aldi', 'word_id': 75, 'syns_fr': [74, 76]},
-        {'fr': 'tour', 'eus': 'aldi', 'word_id': 76, 'syns_fr': [74, 75]},
+        {'fr': 'tour', 'eus': 'aldi', 'word_id': 76, 'syns_fr': [74, 75]},//TODO: mismatch fr towers = fr tours
         {'fr': 'bûche', "fr_f": true, 'eus': 'egur', 'word_id': 77},
         {'fr': 'vent', 'eus': 'haize', 'word_id': 78},
         {'fr': 'neige', "fr_f": true, 'eus': 'elur', 'word_id': 79},
@@ -172,7 +173,7 @@
         {'fr': 'professeur', 'eus': 'irakasle', 'word_id': 137},
         {'fr': 'exercice', 'eus': 'ariketa', 'word_id': 138},
         {'fr': 'question', "fr_f": true, 'eus': 'galdera', 'word_id': 139},
-        {'fr': 'réponse', "fr_f": true, 'eus': 'erantzun', 'word_id': 140},
+        {'fr': 'réponse', "fr_f": true, 'eus': 'erantzun', 'word_id': 140, 'syns_eus': [184]},
         {'fr': 'verbe', 'eus': 'aditz', 'word_id': 141},
         {'fr': 'vérité', "fr_f": true, 'eus': 'egia', 'word_id': 142},
         {'fr': 'mensonge', 'eus': 'gezur', 'word_id': 145},
@@ -229,7 +230,27 @@
         {"fr": "Guillaume", "pers_name": true, "plur_fr": "Guillaume", "eus": "Guillaume"},
         {"fr": "poisson", "eus": "arrain"},
         {"fr": "Sonia", "plur_fr": "Sonia", "pers_name": true, "fr_f": true, "eus": "Sonia"},
-        {"fr": "semaine", "fr_f": true, "eus": "aste", 'word_id': 58}
+        {"fr": "semaine", "fr_f": true, "eus": "aste", 'word_id': 58},
+        
+        {'fr': 'réponse', "fr_f": true, 'eus': 'arrapostu', 'word_id': 184, 'syns_eus': [140]},
+        {'fr': 'second', 'eus': 'bigarren', 'word_id': 185},
+        // {'fr': 'rose', 'eus': 'arrosa', 'word_id': 211, 'syns_fr': [214]},
+        {'fr': 'rose', "fr_f": true, 'eus': 'arrosa', 'word_id': 214, 'syns_fr': [211]},
+        // {'fr': 'vert', 'eus': 'berde', 'word_id': 215},
+        // {'fr': 'noir', 'eus': 'beltz', 'word_id': 216},
+        // {'fr': 'rouge', 'eus': 'gorri', 'word_id': 217},
+        {'fr': 'communiste', 'eus': 'komunista', 'word_id': 189},
+        {'fr': 'Afrique', "fr_f": true, 'eus': 'Afrika', 'word_id': 190},
+        {'fr': 'Chine', "fr_f": true, 'eus': 'Txina', 'word_id': 191},
+        {'fr': 'Italie', "fr_f": true, 'eus': 'Italia', 'word_id': 192},
+        {'fr': 'Grèce', "fr_f": true, 'eus': 'Grezia', 'word_id': 193},
+        {'fr': 'Portugal', 'eus': 'Portugal', 'word_id': 194},
+        {'fr': 'Belgique', "fr_f": true, 'eus': 'Belgika', 'word_id': 195},
+        {'fr': 'pizza', "fr_f": true, 'eus': 'pizza', 'word_id': 196},
+        {'fr': 'tour', "plur_fr": "tours (f)", "fr_f": true, 'eus': 'dorre', 'word_id': 197},
+        {'fr': 'Fado', 'eus': 'Fado', 'word_id': 198},
+        {'fr': 'parc', 'eus': 'parke', 'word_id': 199},
+        {'fr': 'liqueur de prunelles', "plur_fr": "liqueurs de prunelles", "fr_f": true, 'eus': 'patxaran', 'word_id': 210},
     ];
     //"fr_f_plur"
     
@@ -260,9 +281,15 @@
         {"fr": "étranger", "fr_f": "étrangère", 'fr_post': true, "eus": "kanpotar", 'word_id': 174, 'syns_eus': [175]},
         {"fr": "étranger", "fr_f": "étrangère", 'fr_post': true, "eus": "arrotz", 'word_id': 175, 'syns_fr': [176], 'syns_eus': [174]},
         {"fr": "bizarre", "fr_f": "bizarre", 'fr_post': true, "eus": "arrotz", 'word_id': 176, 'syns_fr': [175]},    
+        {'fr': 'second', 'eus': 'bigarren', 'word_id': 212},
+        {'fr': 'rose', "fr_f": "rose", 'fr_post': true, 'eus': 'arrosa', 'word_id': 213},
+        {'fr': 'vert', 'fr_post': true, 'eus': 'berde', 'word_id': 186},
+        {'fr': 'noir', 'fr_post': true, 'eus': 'beltz', 'word_id': 187},
+        {'fr': 'rouge', "fr_f": "rouge", 'fr_post': true, 'eus': 'gorri', 'word_id': 188},
     ];
     
     // {'fr': "d'accord", 'eus': 'ados', 'word_id': 135},
+    
   </script>
   <script type="text/javascript">
     var app = angular.module('myApp', []);
@@ -1098,6 +1125,7 @@
     
     							// +e if indet conson + ergative (k)
     							if ($scope.target_chunks[i]["suf_name1"]=="k") {
+    								if ($scope.target.slice(-2)=="uk") $scope.target=$scope.target.slice(0,-1); //TODO: check that (batzuk-> batzuek) but (Yannick, Pok, Puk)?
     								if (!(last_is_vowel)) $scope.target+="e";
     								$scope.target+="k";
     							// else -a if already a + suf
@@ -1332,7 +1360,7 @@
     </div>
   </div>
     <div>
-      Ukan_Izan version 1.20
+      Ukan_Izan version 1.21
     </div>
 </div>
 </body>

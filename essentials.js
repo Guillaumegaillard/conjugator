@@ -5,6 +5,7 @@ var dets=[
 
 var indets=[
     {"fr": "quelques ","quant": "indet","num": "plur","eus": "zenbait"},    
+    {"fr": "plusieurs ","quant": "indet","num": "plur","eus": "batzuk"},    
     {"fr": "peu d'un ","fr_f": "peu d'une ","quant": "indet","num": "sing","eus": "gutxi"},
     // "fr": "du (1 part. indén. de) ", "fr_before_vowel": "peu de l'", "fr": "peu de ", "fr": "un peu de ",
     // {   "fr": "du ","fr_f": "de la ","fr_before_vowel": "de l'","quant": "indet","num": "sing"},    
@@ -46,7 +47,7 @@ var pronoms=[
     {"fr": "elle", "fr_f": true, "eus": "bera", "fr_pers":2, 'word_id': 2, 'syns_fr': [6], 'syns_eus': [4]},
     {"fr": "elles", "plur": true, "fr_f": true, "eus": "haiek", "fr_pers":5, 'word_id': 3, 'syns_fr': [7], 'syns_eus': [1]},
     {"fr": "elle", "fr_f": true, "eus": "hura", "fr_pers":2, 'word_id': 4, 'syns_fr': [6], 'syns_eus': [2]},
-    {"fr": "ils", "plur": true, "eus": "beraiek", "fr_pers":5, 'word_id': 5, 'syns_fr': [1], 'syns_eus': [3]},
+    {"fr": "ils", "plur": true, "eus": "beraiek", "fr_pers":5, 'word_id': 5, 'syns_fr': [1], 'syns_eus': [7]},
     {"fr": "il", "eus": "bera", "fr_pers":2, 'word_id': 6, 'syns_fr': [2], 'syns_eus': [4]},
     {"fr": "ils", "plur": true, "eus": "haiek", "fr_pers":5, 'word_id': 7, 'syns_fr': [3], 'syns_eus': [5]},
     {"fr": "il", "eus": "hura", "fr_pers":2, 'word_id': 8, 'syns_fr': [2], 'syns_eus': [6]},

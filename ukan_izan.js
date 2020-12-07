@@ -831,6 +831,7 @@ app.controller('myCtrl', function($scope) {
 
 							// +e if indet conson + ergative (k)
 							if ($scope.target_chunks[i]["suf_name1"]=="k") {
+								if ($scope.target.slice(-2)=="uk") $scope.target=$scope.target.slice(0,-1); //TODO: check that (batzuk-> batzuek) but (Yannick, Pok, Puk)?
 								if (!(last_is_vowel)) $scope.target+="e";
 								$scope.target+="k";
 							// else -a if already a + suf
