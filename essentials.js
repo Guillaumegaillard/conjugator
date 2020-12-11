@@ -41,18 +41,20 @@ var ordins=[
 ];
 
 var pronoms=[
-    {"fr": "je", "eus": "ni", "fr_pers":0},
-    {"fr": "tu", "eus": "zu", "fr_pers":1},
-    {"fr": "elles", "plur": true, "fr_f": true, "eus": "beraiek", "fr_pers":5, 'word_id': 1, 'syns_fr': [7], 'syns_eus': [3]},
-    {"fr": "elle", "fr_f": true, "eus": "bera", "fr_pers":2, 'word_id': 2, 'syns_fr': [6], 'syns_eus': [4]},
-    {"fr": "elles", "plur": true, "fr_f": true, "eus": "haiek", "fr_pers":5, 'word_id': 3, 'syns_fr': [7], 'syns_eus': [1]},
-    {"fr": "elle", "fr_f": true, "eus": "hura", "fr_pers":2, 'word_id': 4, 'syns_fr': [6], 'syns_eus': [2]},
-    {"fr": "ils", "plur": true, "eus": "beraiek", "fr_pers":5, 'word_id': 5, 'syns_fr': [1], 'syns_eus': [7]},
-    {"fr": "il", "eus": "bera", "fr_pers":2, 'word_id': 6, 'syns_fr': [2], 'syns_eus': [4]},
-    {"fr": "ils", "plur": true, "eus": "haiek", "fr_pers":5, 'word_id': 7, 'syns_fr': [3], 'syns_eus': [5]},
-    {"fr": "il", "eus": "hura", "fr_pers":2, 'word_id': 8, 'syns_fr': [2], 'syns_eus': [6]},
-    {"fr": "nous", "eus": "gu", "fr_pers":3},
-    {"fr": "vous (pl.)", "eus": "zuek", "fr_pers":4},
+    {"fr": "je", "fr_f": true, "eus": "ni", "fr_pers":0},
+    {"fr": "tu", "fr_f": true, "eus": "zu", "fr_pers":1},
+    // {"fr": "il", "eus": "bera", "fr_pers":2, 'word_id': 6, 'syns_fr': [2], 'syns_eus': [4]},
+    // {"fr": "il", "eus": "hura", "fr_pers":2, 'word_id': 8, 'syns_fr': [2], 'syns_eus': [6]},
+    {"fr": "il", "fr_f_form": "elle", "eus": "hura", "fr_pers":2, 'word_id': 8, 'syns_eus': [6]},
+    {"fr": "il", "fr_f_form": "elle", "eus": "bera", "fr_pers":2, 'word_id': 6, 'syns_eus': [8]},
+    // {"fr": "elle", "fr_f": true, "eus": "hura", "fr_pers":2, 'word_id': 4, 'syns_fr': [6], 'syns_eus': [2]},
+    // {"fr": "elle", "fr_f": true, "eus": "bera", "fr_pers":2, 'word_id': 2, 'syns_fr': [6], 'syns_eus': [4]},
+    {"fr": "ils", "fr_f_form": "elles", "plur": true, "eus": "haiek", "fr_pers":5, 'word_id': 7, 'syns_eus': [5]},
+    {"fr": "ils", "fr_f_form": "elles", "plur": true, "eus": "beraiek", "fr_pers":5, 'word_id': 5, 'syns_eus': [7]},
+    // {"fr": "elles", "plur": true, "fr_f": true, "eus": "haiek", "fr_pers":5, 'word_id': 3, 'syns_fr': [7], 'syns_eus': [1]},
+    // {"fr": "elles", "plur": true, "fr_f": true, "eus": "beraiek", "fr_pers":5, 'word_id': 1, 'syns_fr': [7], 'syns_eus': [3]},
+    {"fr": "nous", "fr_f": true, "eus": "gu", "fr_pers":3},
+    {"fr": "vous (pl.)", "fr_f": true, "eus": "zuek", "fr_pers":4},
     ];
 
 var verbs=[

@@ -109,11 +109,13 @@ app.controller('myCtrl', function($scope) {
 
 		//////// NAME GROUP 1
 		var pronom_proba=50; //percent
+		var femi_proba=50; //percent
 		var name1;
 		var iRandom_name1 = 0;
 		var name1_is_proper_noun = false;
 
 		var name1_is_pronom = (Math.floor((Math.random() * 100))<pronom_proba);
+		var fem1 = (Math.floor((Math.random() * 100))<femi_proba);
 
 		if (name1_is_pronom) {
 			var iRandom_pron1 = Math.floor((Math.random() * ($scope.pronoms.length)));
@@ -123,7 +125,29 @@ app.controller('myCtrl', function($scope) {
 			name1 = names[iRandom_name1-1];
 		}
 
-		$scope.name1 = name1.fr;
+		if (fem1){
+			var fem_exists=false;
+			if(name1.fr_f) {
+				$scope.name1 = name1.fr;
+				fem_exists=true;
+			}
+			if("fr_f_suf" in name1) {
+				$scope.name1 = name1.fr+name1.fr_f_suf;
+				fem_exists=true;
+			}
+			if("fr_f_form" in name1) {
+				$scope.name1 = name1.fr_f_form;
+				fem_exists=true;
+			};
+			if (!(fem_exists)) {
+				fem1=false;
+				$scope.name1 = name1.fr;
+			}
+		} else {
+			if(name1.fr_f) fem1=true;
+			$scope.name1 = name1.fr;
+		}
+
 		$scope.hints.push(name1);
 		for (i = 0; i < target_len; i++) { 
 			$scope.target_chunks[i]["name1"]=name1.eus;
@@ -187,11 +211,32 @@ app.controller('myCtrl', function($scope) {
 					break;
 			};
 
-			if (name1.fr_f && "fr_f" in deters[iRandom_deter1]) {
-				$scope.deter1 = deters[iRandom_deter1].fr_f;
+			// if (name1.fr_f && "fr_f" in deters[iRandom_deter1]) {
+			// 	$scope.deter1 = deters[iRandom_deter1].fr_f;
+			// } else {
+			// 	$scope.deter1 = deters[iRandom_deter1].fr;
+			// }
+
+			if (fem1){
+				var fem_exists=false;
+				if("fr_f" in deters[iRandom_deter1]) {
+					$scope.deter1 = deters[iRandom_deter1].fr_f;
+					fem_exists=true;
+				}
+				if("fr_f_suf" in deters[iRandom_deter1]) {
+					$scope.deter1 = deters[iRandom_deter1].fr+deters[iRandom_deter1].fr_f_suf;
+					fem_exists=true;
+				};
+				if (!(fem_exists)) $scope.deter1 = deters[iRandom_deter1].fr;
 			} else {
 				$scope.deter1 = deters[iRandom_deter1].fr;
 			}
+
+
+
+
+
+
 			if (deters[iRandom_deter1].num == "plur") {
 				if (deters[iRandom_deter1].quant == "ordin") {
 					if (Math.floor((Math.random() *2))>0) {
@@ -207,7 +252,11 @@ app.controller('myCtrl', function($scope) {
 						if (deters[iRandom_deter1].quant == "indet") $scope.target_chunks[i]["ordin1"]=deters[iRandom_deter1].eus;
 					}
 				};
-				if ("plur_fr" in name1) {$scope.name1 = name1.plur_fr;} else{$scope.name1 +="s";}
+				if ((fem1)&&("plur_fr_f" in name1)) {
+					$scope.name1 = name1.plur_fr_f;
+				} else {
+					if ("plur_fr" in name1) {$scope.name1 = name1.plur_fr;} else{$scope.name1 +="s";}
+				};
 			} else{
 				for (i = 0; i < target_len; i++) { 
 					if (deters[iRandom_deter1].quant == "deter") $scope.target_chunks[i]["suf_name1"]="a";
@@ -278,7 +327,8 @@ app.controller('myCtrl', function($scope) {
 			};
 			if (iRandom_adj1>0) {
 				if (deters[iRandom_deter1].num == "plur") {
-					if (name1.fr_f) {
+					// if (name1.fr_f) {
+					if (fem1) {
 						if ("fr_f_plur" in adjs[iRandom_adj1-1]) {
 							$scope.adj1 = adjs[iRandom_adj1-1].fr_f_plur;
 						} else{
@@ -292,7 +342,8 @@ app.controller('myCtrl', function($scope) {
 						} else {$scope.adj1 = adjs[iRandom_adj1-1].fr+"s";}
 					}
 				} else {
-					if (name1.fr_f) {
+					// if (name1.fr_f) {
+					if (fem1) {
 						if ("fr_f" in adjs[iRandom_adj1-1]) {
 							$scope.adj1 = adjs[iRandom_adj1-1].fr_f;
 						} else {$scope.adj1 = adjs[iRandom_adj1-1].fr+"e";}
@@ -411,7 +462,8 @@ app.controller('myCtrl', function($scope) {
 
 
 			if ((name1_is_pronom && name1.fr_pers>2) || (!(name1_is_pronom) && deters[iRandom_deter1].num == "plur")) {
-				if (name1.fr_f) {
+				// if (name1.fr_f) {
+				if (fem1) {
 					if ("fr_f_plur" in name2) {
 						$scope.name2 = name2.fr_f_plur;
 					} else{
@@ -428,7 +480,8 @@ app.controller('myCtrl', function($scope) {
 					$scope.target_chunks[i]["suf_name2"]="ak";
 				};
 			} else {
-				if (name1.fr_f) {
+				// if (name1.fr_f) {
+				if (fem1) {
 					if ("fr_f" in name2) {
 						$scope.name2 = name2.fr_f;
 					} else {$scope.name2 = name2.fr+"e";}
@@ -442,7 +495,32 @@ app.controller('myCtrl', function($scope) {
 		} else {
 			name2_is_adj=false;
 			name2 = names[iRandom_name2-1];
-			$scope.name2 = name2.fr;
+
+			var fem2 = (Math.floor((Math.random() * 100))<femi_proba);
+
+			// $scope.name2 = name2.fr;
+			if (fem2){
+				var fem_exists=false;
+				if(name2.fr_f) {
+					$scope.name2 = name2.fr;
+					fem_exists=true;
+				}
+				if("fr_f_suf" in name2) {
+					$scope.name2 = name2.fr+name2.fr_f_suf;
+					fem_exists=true;
+				}
+				if("fr_f_form" in name2) {
+					$scope.name2 = name2.fr_f_form;
+					fem_exists=true;
+				};
+				if (!(fem_exists)) {
+					fem2=false;
+					$scope.name2 = name2.fr;
+				}
+			} else {
+				if(name2.fr_f) fem2=true;
+				$scope.name2 = name2.fr;
+			}
 			
 			if (iRandom_name2!=iRandom_name1) {
 				if (!("word_id" in name2)){
@@ -518,11 +596,26 @@ app.controller('myCtrl', function($scope) {
 					break;
 			};
 
-			if (name2.fr_f && "fr_f" in deters[iRandom_deter2]) {
-				$scope.deter2 = deters[iRandom_deter2].fr_f;
+			// if (name2.fr_f && "fr_f" in deters[iRandom_deter2]) {
+			// 	$scope.deter2 = deters[iRandom_deter2].fr_f;
+			// } else {
+			// 	$scope.deter2 = deters[iRandom_deter2].fr;
+			// }
+			if (fem2){
+				var fem_exists=false;
+				if("fr_f" in deters[iRandom_deter2]) {
+					$scope.deter2 = deters[iRandom_deter2].fr_f;
+					fem_exists=true;
+				}
+				if("fr_f_suf" in deters[iRandom_deter2]) {
+					$scope.deter2 = deters[iRandom_deter2].fr+deters[iRandom_deter2].fr_f_suf;
+					fem_exists=true;
+				};
+				if (!(fem_exists)) $scope.deter2 = deters[iRandom_deter2].fr;
 			} else {
 				$scope.deter2 = deters[iRandom_deter2].fr;
 			}
+
 			if (deters[iRandom_deter2].num == "plur") {
 				if (deters[iRandom_deter2].quant == "ordin") {
 					for (i = 0; i < target_len; i++) { 
@@ -549,7 +642,12 @@ app.controller('myCtrl', function($scope) {
 						if (deters[iRandom_deter2].quant == "indet") $scope.target_chunks[i]["ordin2"]=deters[iRandom_deter2].eus;
 					};
 				};
-				if ("plur_fr" in name2) {$scope.name2 = name2.plur_fr;} else{$scope.name2 +="s";}
+				// if ("plur_fr" in name2) {$scope.name2 = name2.plur_fr;} else{$scope.name2 +="s";}
+				if ((fem2)&&("plur_fr_f" in name2)) {
+					$scope.name2 = name2.plur_fr_f;
+				} else {
+					if ("plur_fr" in name2) {$scope.name2 = name2.plur_fr;} else{$scope.name2 +="s";}
+				};
 			} else {
 				for (i = 0; i < target_len; i++) { 
 					if (deters[iRandom_deter2].quant == "deter") $scope.target_chunks[i]["suf_name2"]="a";
@@ -635,7 +733,8 @@ app.controller('myCtrl', function($scope) {
 			};
 			if (iRandom_adj2>0) {
 				if (deters[iRandom_deter2].num == "plur") {
-					if (name2.fr_f) {
+					// if (name2.fr_f) {
+					if (fem2) {
 						if ("fr_f_plur" in adjs[iRandom_adj2-1]) {
 							$scope.adj2 = adjs[iRandom_adj2-1].fr_f_plur;
 						} else{
@@ -649,7 +748,8 @@ app.controller('myCtrl', function($scope) {
 						} else {$scope.adj2 = adjs[iRandom_adj2-1].fr+"s";}
 					}
 				} else {
-					if (name2.fr_f) {
+					// if (name2.fr_f) {
+					if (fem2) {
 						if ("fr_f" in adjs[iRandom_adj2-1]) {
 							$scope.adj2 = adjs[iRandom_adj2-1].fr_f;
 						} else {$scope.adj2 = adjs[iRandom_adj2-1].fr+"e";}
