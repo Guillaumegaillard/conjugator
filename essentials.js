@@ -52,7 +52,7 @@ var pronoms=[
     {"fr": "ils", "plur": true, "eus": "haiek", "fr_pers":5, 'word_id': 7, 'syns_fr': [3], 'syns_eus': [5]},
     {"fr": "il", "eus": "hura", "fr_pers":2, 'word_id': 8, 'syns_fr': [2], 'syns_eus': [6]},
     {"fr": "nous", "eus": "gu", "fr_pers":3},
-    {"fr": "vous", "eus": "zuek", "fr_pers":4},
+    {"fr": "vous (pl.)", "eus": "zuek", "fr_pers":4},
     ];
 
 var verbs=[
