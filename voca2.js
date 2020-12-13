@@ -196,6 +196,17 @@ var names=[
     {'fr': 'euro', 'eus': 'euro', 'word_id': 259},
     {'fr': 'béret', 'eus': 'txapel', 'word_id': 260},
     {'fr': 'année', "fr_f": true, 'eus': 'urte', 'word_id': 261},
+    {'fr': 'classe', "fr_f": true, 'eus': 'klase', 'word_id': 263},
+    {'fr': 'sommet', 'eus': 'gailur', 'word_id': 264},
+    {'fr': 'mère', "fr_f": true, 'eus': 'ama', 'word_id': 265},
+    {'fr': 'oreille', "fr_f": true, 'eus': 'belarri', 'word_id': 266},
+    {'fr': 'bouche', "fr_f": true, 'eus': 'aho', 'word_id': 267},
+    {'fr': 'langue non basque', "plur_fr": "langues non basque", "fr_f": true, 'eus': 'erdara', 'word_id': 268, 'syns_eus': [269]},
+    {'fr': 'langue non basque', "plur_fr": "langues non basque", "fr_f": true, 'eus': 'erdera', 'word_id': 269, 'syns_eus': [268]},
+    {'fr': 'donnée', "fr_f": true, 'eus': 'datu', 'word_id': 270},
+    {'fr': 'bière', "fr_f": true, 'eus': 'garagardo', 'word_id': 271, 'syns_eus': [272, 273]},
+    {'fr': 'bière', "fr_f": true, 'eus': 'kaina', 'word_id': 272, 'syns_eus': [271, 273]},
+    {'fr': 'bière', "fr_f": true, 'eus': 'zerbeza', 'word_id': 273, 'syns_eus': [271, 272]},
 ];
 
 var adjs=[
@@ -209,7 +220,7 @@ var adjs=[
     {'fr': 'dernier', "fr_f": "dernière", 'eus': 'azken', 'word_id': 165},
     {'fr': 'bon', "fr_f": "bonne", 'eus': 'on', 'word_id': 84},
     {'fr': 'mauvais', "plur_fr": "mauvais", 'eus': 'txar', 'word_id': 85, 'syns_fr': [86]},
-    {'fr': 'moche', 'fr_post': true, "fr_f": "moche", 'eus': 'txar', 'word_id': 86, 'syns_fr': [85]},
+    {'fr': 'méchant', 'eus': 'txar', 'word_id': 86, 'syns_fr': [85]},
     {'fr': 'bas', "plur_fr": "bas", "fr_f": "basse", 'eus': 'behe', 'word_id': 94},
     {'fr': 'mouillé', 'fr_post': true, 'eus': 'busti', 'word_id': 115, 'syns_fr': [116]},
     {'fr': 'humide', 'fr_post': true, "fr_f": "humide", "fr_h_mute":true, 'eus': 'busti', 'word_id': 116, 'syns_fr': [115]},
@@ -238,10 +249,13 @@ var adjs=[
     {'fr': 'chéri', "fr_f": "chérie", 'fr_post': true, 'eus': 'maite', 'word_id': 242, 'syns_eus': [243]},
     {'fr': 'chéri', "fr_f": "chérie", 'fr_post': true, 'eus': 'maitia', 'word_id': 243, 'syns_eus': [242]},
     {'fr': 'excellent', 'eus': 'bikain', 'word_id': 262},
+    {'fr': 'prêt', 'fr_post': true, 'eus': 'prest', 'word_id': 274},
+    {'fr': 'ouvert', 'fr_post': true, 'eus': 'zabal', 'word_id': 275},
+    {'fr': 'moche', 'fr_post': true, "fr_f": "moche", 'eus': 'itsusi', 'word_id': 276},
 ];
 
 // {'fr': "d'accord", 'eus': 'ados', 'word_id': 135},
-//noun  "plur_fr": , "fr_f": true, "pers_name": true, "fr_h_mute":true,
+//noun  "plur_fr": , "fr_f": true, "pers_name": true, "fr_h_mute":true, "fr_f_form", "fr_f_suf": "te",
 //adj   , "plur_fr": "mauvais", "fr_f_plur" "fr_f": "rouge", 'fr_post': true, "fr_before_vowel": "bel", "fr_h_mute":true,
 
 

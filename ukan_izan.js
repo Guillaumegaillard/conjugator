@@ -3,7 +3,7 @@ var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope) {
 
 	var deters=dets.concat(indets,ordins);
-	$scope.verbs = verbs;
+	$scope.auxiliaries = auxiliaries;
 	$scope.deters = deters;
 	$scope.names = names;
 	$scope.adjs = adjs;
@@ -19,7 +19,7 @@ app.controller('myCtrl', function($scope) {
 	$scope.adj2="";
 	$scope.name2="";
 
-	$scope.verb="";
+	$scope.auxiliary="";
 	$scope.infinitif="";
 
 	$scope.hints = [];
@@ -28,7 +28,7 @@ app.controller('myCtrl', function($scope) {
 
 	$scope.targets = [""];
 	$scope.target = "";
-	$scope.target_chunks = [{"name1":"", "ordin1":"", "adj1":"", "verb":"", "name2":"", "adj2":"", "ordin2":""}];
+	$scope.target_chunks = [{"name1":"", "ordin1":"", "adj1":"", "auxiliary":"", "name2":"", "adj2":"", "ordin2":""}];
 
 	$scope.message = " Écrire la traduction. NB: l'ordre des mots n'est pas vérifié ici.";
 	$scope.fr_phrase = ""
@@ -86,7 +86,7 @@ app.controller('myCtrl', function($scope) {
 		$scope.adj2="";
 		$scope.name2="";
 
-		$scope.verb="";
+		$scope.auxiliary="";
 		$scope.infinitif="";
 
 		$scope.hints=[];
@@ -100,7 +100,7 @@ app.controller('myCtrl', function($scope) {
 
 		$scope.targets = [""];
 		$scope.target = "";
-		$scope.target_chunks = [{"name1":"", "suf_name1":"", "ordin1":"", "adj1":"", "verb":"", "name2":"", "suf_name2":"", "adj2":"", "ordin2":""}];
+		$scope.target_chunks = [{"name1":"", "suf_name1":"", "ordin1":"", "adj1":"", "auxiliary":"", "name2":"", "suf_name2":"", "adj2":"", "ordin2":""}];
 		var target_len=$scope.targets.length;
 		var i;
 
@@ -398,10 +398,10 @@ app.controller('myCtrl', function($scope) {
 
 		target_len=$scope.targets.length;
 
-		//////// VERB
-		var iRandom_verb = Math.floor((Math.random() * $scope.verbs.length));
-		var infinitif=$scope.verbs[iRandom_verb];
-		$scope.infinitif=$scope.verbs[iRandom_verb];
+		//////// auxiliary
+		var iRandom_auxiliary = Math.floor((Math.random() * $scope.auxiliaries.length));
+		var infinitif=$scope.auxiliaries[iRandom_auxiliary];
+		$scope.infinitif=$scope.auxiliaries[iRandom_auxiliary];
 		var pers;
 		var pers_COD = 0;
 
@@ -414,8 +414,8 @@ app.controller('myCtrl', function($scope) {
 			
 		} else {pers=name1.fr_pers;};
 
-		// $scope.verb = infinitif.fr;
-		$scope.verb = infinitif.fr_c[pers];
+		// $scope.auxiliary = infinitif.fr;
+		$scope.auxiliary = infinitif.fr_c[pers];
 
 		var negative=false;
 		if (Math.floor((Math.random() *2))>0) negative=true;
@@ -423,13 +423,13 @@ app.controller('myCtrl', function($scope) {
 		if (negative) {
 			$scope.name1 += " ";
 
-			if (($scope.verb.match(vowelRegex))||(infinitif.fr_h_mute)) {
-				$scope.verb="n'"+$scope.verb+" pas"
+			if (($scope.auxiliary.match(vowelRegex))||(infinitif.fr_h_mute)) {
+				$scope.auxiliary="n'"+$scope.auxiliary+" pas"
 			} else {
-				$scope.verb="ne "+$scope.verb+" pas"
+				$scope.auxiliary="ne "+$scope.auxiliary+" pas"
 			}
 		} else {
-			if ((pers == 0) && (($scope.verb.match(vowelRegex))||(infinitif.fr_h_mute))) {
+			if ((pers == 0) && (($scope.auxiliary.match(vowelRegex))||(infinitif.fr_h_mute))) {
 				$scope.name1 = "j'";
 			} else {
 				$scope.name1 += " ";			
@@ -824,7 +824,7 @@ app.controller('myCtrl', function($scope) {
 		if (($scope.adj1.length>0) && (adjs[iRandom_adj1-1].fr_post)) {
 			$scope.fr_phrase += $scope.adj1;
 		};
-		$scope.fr_phrase += $scope.verb;
+		$scope.fr_phrase += $scope.auxiliary;
 		$scope.fr_phrase += " ";
 		$scope.fr_phrase += $scope.deter2;
 		if (($scope.adj2.length>0) && (!(adjs[iRandom_adj2-1].fr_post))) {
@@ -849,13 +849,13 @@ app.controller('myCtrl', function($scope) {
 				if ($scope.target_chunks[i]["suf_name1"]=="") $scope.target_chunks[i]["suf_name1"]="k";
 				if (name1_is_pronom) $scope.target_chunks[i]["suf_name1"]="k";			
 			};
-			$scope.target_chunks[i]["verb"]=infinitif.eus_c[pers_COD][pers];
+			$scope.target_chunks[i]["auxiliary"]=infinitif.eus_c[pers_COD][pers];
 
 			// console.log("target chunks: " + $scope.target_chunks[i]["name1"]);
 			// console.log("target chunks: " + $scope.target_chunks[i]["suf_name1"]);
 			// console.log("target chunks: " + $scope.target_chunks[i]["ordin1"]);
 			// console.log("target chunks: " + $scope.target_chunks[i]["adj1"]);
-			// console.log("target chunks: " + $scope.target_chunks[i]["verb"]);
+			// console.log("target chunks: " + $scope.target_chunks[i]["auxiliary"]);
 			// console.log("target chunks: " + $scope.target_chunks[i]["name2"]);
 			// console.log("target chunks: " + $scope.target_chunks[i]["suf_name2"]);
 			// console.log("target chunks: " + $scope.target_chunks[i]["adj2"]);
@@ -946,9 +946,9 @@ app.controller('myCtrl', function($scope) {
 			$scope.target+=" ";
 
 			if (negative) {
-				// verb
+				// auxiliary
 				$scope.target+="ez ";
-				$scope.target+=$scope.target_chunks[i]["verb"];
+				$scope.target+=$scope.target_chunks[i]["auxiliary"];
 				$scope.target+=" ";
 			};
 
@@ -990,9 +990,9 @@ app.controller('myCtrl', function($scope) {
 			};
 
 			if (!(negative)) {
-				// verb
+				// auxiliary
 				$scope.target+=" ";
-				$scope.target+=$scope.target_chunks[i]["verb"];
+				$scope.target+=$scope.target_chunks[i]["auxiliary"];
 			};
 			$scope.target+=".";
 

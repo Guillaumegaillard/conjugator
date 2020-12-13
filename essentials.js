@@ -57,7 +57,7 @@ var pronoms=[
     {"fr": "vous (pl.)", "fr_f": true, "eus": "zuek", "fr_pers":4},
     ];
 
-var verbs=[
+var auxiliaries=[
     {
         "fr": "être",
         "eus": "izan",
