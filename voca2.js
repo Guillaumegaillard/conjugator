@@ -201,12 +201,13 @@ var names=[
     {'fr': 'mère', "fr_f": true, 'eus': 'ama', 'word_id': 265},
     {'fr': 'oreille', "fr_f": true, 'eus': 'belarri', 'word_id': 266},
     {'fr': 'bouche', "fr_f": true, 'eus': 'aho', 'word_id': 267},
-    {'fr': 'langue non basque', "plur_fr": "langues non basque", "fr_f": true, 'eus': 'erdara', 'word_id': 268, 'syns_eus': [269]},
-    {'fr': 'langue non basque', "plur_fr": "langues non basque", "fr_f": true, 'eus': 'erdera', 'word_id': 269, 'syns_eus': [268]},
+    {'fr': 'langue non basque', "plur_fr": "langues non basques", "fr_f": true, 'eus': 'erdara', 'word_id': 268, 'syns_eus': [269]},
+    {'fr': 'langue non basque', "plur_fr": "langues non basques", "fr_f": true, 'eus': 'erdera', 'word_id': 269, 'syns_eus': [268]},
     {'fr': 'donnée', "fr_f": true, 'eus': 'datu', 'word_id': 270},
     {'fr': 'bière', "fr_f": true, 'eus': 'garagardo', 'word_id': 271, 'syns_eus': [272, 273]},
     {'fr': 'bière', "fr_f": true, 'eus': 'kaina', 'word_id': 272, 'syns_eus': [271, 273]},
     {'fr': 'bière', "fr_f": true, 'eus': 'zerbeza', 'word_id': 273, 'syns_eus': [271, 272]},
+    {'fr': 'nombre', 'eus': 'zenbaki', 'word_id': 277},
 ];
 
 var adjs=[
@@ -257,5 +258,6 @@ var adjs=[
 // {'fr': "d'accord", 'eus': 'ados', 'word_id': 135},
 //noun  "plur_fr": , "fr_f": true, "pers_name": true, "fr_h_mute":true, "fr_f_form", "fr_f_suf": "te",
 //adj   , "plur_fr": "mauvais", "fr_f_plur" "fr_f": "rouge", 'fr_post': true, "fr_before_vowel": "bel", "fr_h_mute":true,
+
 
 

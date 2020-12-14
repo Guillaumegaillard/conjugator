@@ -195,7 +195,7 @@ app.controller('myCtrl', function($scope) {
 			var iRandom_deter1;
 			// det, indet, ordin sg or ordin plur?
 			var deter1_family = Math.floor((Math.random() * 4));
-			var ordin_sgs = 1;
+			var ordin_sgs = 1;//3; //0 (huts),0 (zero), 1 (bat)
 			switch (deter1_family){
 				case 0:
 					iRandom_deter1 = Math.floor((Math.random() * (dets.length)));
@@ -301,7 +301,7 @@ app.controller('myCtrl', function($scope) {
 
 
 			}
-			// if (deters[iRandom_deter1].quant == "indet") $scope.hints.push(deters[iRandom_deter1]);
+			if (deters[iRandom_deter1].quant == "ordin") $scope.deter1 += " ";
 
 			target_len=$scope.targets.length;
 
@@ -580,7 +580,7 @@ app.controller('myCtrl', function($scope) {
 			var iRandom_deter2;
 			// det, indet, ordin sg or ordin plur?
 			var deter2_family = Math.floor((Math.random() * 4));
-			var ordin_sgs = 1;
+			var ordin_sgs = 1;//3;
 			switch (deter2_family){
 				case 0:
 					iRandom_deter2 = Math.floor((Math.random() * (dets.length)));
@@ -709,6 +709,8 @@ app.controller('myCtrl', function($scope) {
 					}
 				};
 			};
+
+			if (deters[iRandom_deter2].quant == "ordin") $scope.deter2 += " ";
 
 			target_len=$scope.targets.length;
 
