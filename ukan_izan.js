@@ -2,6 +2,8 @@ var app = angular.module('myApp', []);
 
 app.controller('myCtrl', function($scope) {
 
+	$scope.version_Ukan_Izan = version_Ukan_Izan;
+
 	var deters=dets.concat(indets,ordins);
 	$scope.auxiliaries = auxiliaries;
 	$scope.deters = deters;

@@ -86,7 +86,7 @@
         {'fr': 'soixante-dix', 'eus': 'hirurogeita hamar', 'word_id': 313, 'syns_eus': [314], 'quant': 'ordin', 'num': 'plur'},
         {'fr': 'soixante-dix', 'eus': 'hiruretan hogeita hamar', 'word_id': 314, 'syns_eus': [313], 'quant': 'ordin', 'num': 'plur'},
         {'fr': 'quatre-vingts', 'eus': 'laurogei', 'word_id': 315, 'syns_eus': [316], 'quant': 'ordin', 'num': 'plur'},
-        {'fr': 'quatre-vingts', 'eus': 'lauuretan hogei', 'word_id': 316, 'syns_eus': [315], 'quant': 'ordin', 'num': 'plur'},
+        {'fr': 'quatre-vingts', 'eus': 'lauretan hogei', 'word_id': 316, 'syns_eus': [315], 'quant': 'ordin', 'num': 'plur'},
         {'fr': 'quatre-vingt-dix', 'eus': 'laurogeita hamar', 'word_id': 317, 'syns_eus': [318], 'quant': 'ordin', 'num': 'plur'},
         {'fr': 'quatre-vingt-dix', 'eus': 'lauretan hogeita hamar', 'word_id': 318, 'syns_eus': [317], 'quant': 'ordin', 'num': 'plur'},
         {'fr': 'quatre-vingt-dix-sept', 'eus': 'laurogeita hamazazpi', 'word_id': 319, 'syns_eus': [320], 'quant': 'ordin', 'num': 'plur'},
@@ -153,6 +153,10 @@
         },
     
     ];
+    
+    
+    var version_Ukan_Izan = '1.26';
+    var version_Zenbakiak = '1.0';
     
   </script>
   <script type="text/javascript">
@@ -378,8 +382,8 @@
         {'fr': 'premier', "fr_f": "première", 'eus': 'lehen', 'word_id': 162},
         {'fr': 'dernier', "fr_f": "dernière", 'eus': 'azken', 'word_id': 165},
         {'fr': 'bon', "fr_f": "bonne", 'eus': 'on', 'word_id': 84},
-        {'fr': 'mauvais', "plur_fr": "mauvais", 'eus': 'txar', 'word_id': 85, 'syns_fr': [86]},
-        {'fr': 'méchant', 'eus': 'txar', 'word_id': 86, 'syns_fr': [85]},
+        {'fr': 'mauvais', "plur_fr": "mauvais", 'eus': 'txar', 'word_id': 85},
+        {'fr': 'méchant', 'eus': 'gaizto', 'word_id': 86},
         {'fr': 'bas', "plur_fr": "bas", "fr_f": "basse", 'eus': 'behe', 'word_id': 94},
         {'fr': 'mouillé', 'fr_post': true, 'eus': 'busti', 'word_id': 115, 'syns_fr': [116]},
         {'fr': 'humide', 'fr_post': true, "fr_f": "humide", "fr_h_mute":true, 'eus': 'busti', 'word_id': 116, 'syns_fr': [115]},
@@ -424,6 +428,8 @@
     var app = angular.module('myApp', []);
     
     app.controller('myCtrl', function($scope) {
+    
+    	$scope.version_Ukan_Izan = version_Ukan_Izan;
     
     	var deters=dets.concat(indets,ordins);
     	$scope.auxiliaries = auxiliaries;
@@ -1589,10 +1595,10 @@
         </li>
       </ul>
     </div>
-  </div>
     <div>
-      Ukan_Izan version 1.25
+      Ukan_Izan version {{version_Ukan_Izan}}
     </div>
+  </div>
 </div>
 </body>
 </html>

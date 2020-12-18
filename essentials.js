@@ -77,7 +77,7 @@ var ordins=[
     {'fr': 'soixante-dix', 'eus': 'hirurogeita hamar', 'word_id': 313, 'syns_eus': [314], 'quant': 'ordin', 'num': 'plur'},
     {'fr': 'soixante-dix', 'eus': 'hiruretan hogeita hamar', 'word_id': 314, 'syns_eus': [313], 'quant': 'ordin', 'num': 'plur'},
     {'fr': 'quatre-vingts', 'eus': 'laurogei', 'word_id': 315, 'syns_eus': [316], 'quant': 'ordin', 'num': 'plur'},
-    {'fr': 'quatre-vingts', 'eus': 'lauuretan hogei', 'word_id': 316, 'syns_eus': [315], 'quant': 'ordin', 'num': 'plur'},
+    {'fr': 'quatre-vingts', 'eus': 'lauretan hogei', 'word_id': 316, 'syns_eus': [315], 'quant': 'ordin', 'num': 'plur'},
     {'fr': 'quatre-vingt-dix', 'eus': 'laurogeita hamar', 'word_id': 317, 'syns_eus': [318], 'quant': 'ordin', 'num': 'plur'},
     {'fr': 'quatre-vingt-dix', 'eus': 'lauretan hogeita hamar', 'word_id': 318, 'syns_eus': [317], 'quant': 'ordin', 'num': 'plur'},
     {'fr': 'quatre-vingt-dix-sept', 'eus': 'laurogeita hamazazpi', 'word_id': 319, 'syns_eus': [320], 'quant': 'ordin', 'num': 'plur'},
@@ -144,4 +144,8 @@ var auxiliaries=[
     },
 
 ];
+
+
+var version_Ukan_Izan = '1.26';
+var version_Zenbakiak = '1.0';
 
