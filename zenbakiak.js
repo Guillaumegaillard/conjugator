@@ -430,9 +430,16 @@ app.controller('myCtrl', function($scope) {
                 var j;
                 
                 for (i = 0; i < milles.length; i++) { 
-                    if (milles[i].slice(-3)=="uno") milles[i]=milles[i].slice(0,-1);
-                    for (j = 0; j < lower.length; j++) {                        
-                        founds.push(milles[i]+' mil '+lower[j]);
+                    if (milles[i]=="uno") {
+                        for (j = 0; j < lower.length; j++) {                        
+                            founds.push('mil '+lower[j]);
+                        };
+                    } else {
+                        if (milles[i].slice(-3)=="uno") milles[i]=milles[i].slice(0,-1);
+                        if (milles[i].slice(-8)=="veintiun") milles[i]=milles[i].slice(0,-2)+"ún";
+                        for (j = 0; j < lower.length; j++) {                        
+                            founds.push(milles[i]+' mil '+lower[j]);
+                        };
                     };
                 };
 
