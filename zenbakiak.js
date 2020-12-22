@@ -43,6 +43,63 @@ app.controller('myCtrl', function($scope) {
         return 0;
     };
     
+    $scope.check_spanish = function() {
+
+        var sol_id=0;
+        var num_sols = $scope.es_numeros.length;
+        for (sol_id; sol_id < num_sols ; sol_id ++) {
+
+            var form_input=$scope.es_input.toLowerCase().replace(" .","").replace(".","").replace(/-/g," ").replace(/  /g," ").split(" ");
+            var form_target=$scope.es_numeros[sol_id].toLowerCase().replace(".","").replace(/-/g," ").split(" ");
+
+            var is_same=true;
+            var i = form_target.length;
+            if (i!=form_input.length) {
+                is_same= false;
+            } else {
+                while (i--) {
+                    if (form_input[i] !== form_target[i]) is_same= false;
+                };          
+            };
+
+            // console.log("input chunks: " + form_input);
+            // console.log("target chunks: " + form_target);
+
+            // if ($scope.target_input == $scope.target)
+            // if (form_input == form_target)
+            if (is_same) return 1;
+        };
+        return 0;
+    };
+    
+    $scope.check_basque = function() {
+
+        var sol_id=0;
+        var num_sols = $scope.eus_zenbakiak.length;
+        for (sol_id; sol_id < num_sols ; sol_id ++) {
+
+            var form_input=$scope.eus_input.toLowerCase().replace(" .","").replace(".","").replace(/-/g," ").replace(/  /g," ").split(" ");
+            var form_target=$scope.eus_zenbakiak[sol_id].toLowerCase().replace(".","").replace(/-/g," ").split(" ");
+
+            var is_same=true;
+            var i = form_target.length;
+            if (i!=form_input.length) {
+                is_same= false;
+            } else {
+                while (i--) {
+                    if (form_input[i] !== form_target[i]) is_same= false;
+                };          
+            };
+
+            // console.log("input chunks: " + form_input);
+            // console.log("target chunks: " + form_target);
+
+            // if ($scope.target_input == $scope.target)
+            // if (form_input == form_target)
+            if (is_same) return 1;
+        };
+        return 0;
+    };    
     
     function isInt(value) {
         var x;
