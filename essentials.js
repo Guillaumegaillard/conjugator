@@ -147,5 +147,5 @@ var auxiliaries=[
 
 
 var version_Ukan_Izan = '1.26';
-var version_Zenbakiak = '1.0';
+var version_Zenbakiak = '1.1';
 
