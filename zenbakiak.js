@@ -597,7 +597,7 @@ app.controller('myCtrl', function($scope) {
                         };
                     } else {
                         for (j = 0; j < lower.length; j++) {                        
-                            founds.push(billiones[i]+' miliarak eta '+lower[j]);
+                            founds.push(billiones[i]+' miliar eta '+lower[j]);
                         };
                     
                     };
