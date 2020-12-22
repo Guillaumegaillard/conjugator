@@ -102,6 +102,12 @@ app.controller('myCtrl', function($scope) {
         $scope.fr_nombres=prepare_french(iRandom_num);
         $scope.nombre='';
         $scope.fr_input='';
+        $scope.es_numeros=prepare_spanish(iRandom_num);
+        $scope.numero='';
+        $scope.es_input='';
+        $scope.eus_zenbakiak=prepare_basque(iRandom_num);
+        $scope.zenbaki='';
+        $scope.eus_input='';
         // for (var i = 0; i < $scope.fr_nombres.length; i++) {
             // $scope.nombre+=$scope.fr_nombres[i];
             // if (i!=$scope.fr_nombres.length - 1) $scope.nombre+=', ';
@@ -306,7 +312,248 @@ app.controller('myCtrl', function($scope) {
     };
     
     
+    prepare_spanish = function(num) {
+        var i;
+        var found=false;
+        var founds=[];
+        var num_ordins = ordins.length;
+        if (num==0) {
+            founds.push(indets[14].es);
+            founds.push(indets[15].es);
+            found=true;
+        };
+        if (!(found)) {
+            for (i = 0; i < num_ordins; i++) {
+                if (parseInt(ordins[i].intval)==num) {
+                    found=true;
+                    founds.push(ordins[i].es);
+                };
+            };
+        };
+        if (!(found)) {
+            if (num<100){
+                if (num==50){
+                    founds.push("cincuenta");
+                    found=true;
+                } else if (num<30){
+                    tens="veinti";                
+                    units=prepare_spanish(num%10);
+                    for (i = 0; i < units.length; i++) {                        
+                        founds.push(tens+units[i]);
+                    }
+                    found=true;
+                    
+                } else {
+                    tens=prepare_spanish(num-num%10)[0];                
+                    units=prepare_spanish(num%10);
+                    for (i = 0; i < units.length; i++) {                        
+                        founds.push(tens+' y '+units[i]);
+                    }
+                    found=true;
+                };
+            } else if (num<1000) {
+                cents=prepare_spanish(num-num%100)[0];
+                if (num<199) cents="ciento";
+                remainder = prepare_spanish(num%100);
+                for (i = 0; i < remainder.length; i++) {                        
+                    founds.push(cents+' '+remainder[i]);
+                }
+                found=true; 
+                
+            } else if (num<1000000) {
+                var milles;
+                milles = prepare_spanish(Math.floor(num/(1000)));
+                
+                var lower;
+                if (num%1000!=0) {
+                    lower = prepare_spanish(num%1000); 
+                } else {
+                    lower = [''];
+                }
+                var j;
+                
+                for (i = 0; i < milles.length; i++) { 
+                    if (milles[i].slice(-3)=="uno") milles[i]=milles[i].slice(0,-1);
+                    for (j = 0; j < lower.length; j++) {                        
+                        founds.push(milles[i]+' mil '+lower[j]);
+                    };
+                };
 
+                found=true; 
+            } else if (num<1000000000) {
+                var milliones;
+                milliones = prepare_spanish(Math.floor(num/(1000000)));
+                
+                var lower;
+                if (num%1000000!=0) {
+                    lower = prepare_spanish(num%1000000); 
+                } else {
+                    lower = [''];
+                }
+                var j;
+                for (i = 0; i < milliones.length; i++) {
+                    if (milliones[i].slice(-3)=="uno") milliones[i]=milliones[i].slice(0,-1);
+                    var milliones_str=" millones ";
+                    if (milliones[i]=="un") milliones_str=" millón ";
+                    for (j = 0; j < lower.length; j++) {                        
+                        founds.push(milliones[i]+milliones_str+lower[j]);
+                    };
+                };
+                found=true; 
+            } else {
+                var billiones;
+                billiones = prepare_spanish(Math.floor(num/(1000000000)));
+                
+                var lower;
+                if (num%1000000000!=0) {
+                    lower = prepare_spanish(num%1000000000); 
+                } else {
+                    lower = [''];
+                }
+                var j;
+                for (i = 0; i < billiones.length; i++) {  
+                    if (billiones[i].slice(-3)=="uno") billiones[i]=billiones[i].slice(0,-1);
+                    var billiones_str=" billones ";
+                    if (billiones[i]=="un") billiones_str=" billón ";
+                    for (j = 0; j < lower.length; j++) {                        
+                        founds.push(billiones[i]+billiones_str+lower[j]);
+                    };
+                };
+                found=true;                     
+            };
+        };
+        if (!(found)) {
+            return([(num).toString()]);
+        } else {
+            return([...new Set(founds)]);
+        };
+    };
+
+    prepare_basque = function(num) {
+        var i;
+        var found=false;
+        var founds=[];
+        var num_ordins = ordins.length;
+        if (num==0) {
+            founds.push(indets[14].eus);
+            founds.push(indets[15].eus);
+            found=true;
+        };
+        if (!(found)) {
+            for (i = 0; i < num_ordins; i++) {
+                if (parseInt(ordins[i].intval)==num) {
+                    found=true;
+                    founds.push(ordins[i].eus);
+                };
+            };
+        };
+        if (!(found)) {
+            if (num<100){
+                tens=prepare_basque(num-num%20);                
+                units=prepare_basque(num%20);
+                for (i = 0; i < tens.length; i++) {                        
+                    for (var j = 0; j < units.length; j++) {                        
+                        founds.push(tens[i]+"ta "+units[j]);
+                    }
+                    found=true;
+                };
+            } else if (num<1000) {
+                cents=prepare_basque(num-num%100);
+                remainder = prepare_basque(num%100);
+                for (i = 0; i < remainder.length; i++) {
+                    for (var j = 0; j < cents.length; j++) {
+                        founds.push(cents[j]+' eta '+remainder[i]);
+                    }
+                }
+                found=true; 
+                
+            } else if (num<1000000) {
+                var milles;
+                milles = prepare_basque(Math.floor(num/(1000)));
+                
+                var lower;
+                if (num%1000!=0) {
+                    lower = prepare_basque(num%1000); 
+                } else {
+                    lower = [''];
+                }
+                var j;
+                
+                for (i = 0; i < milles.length; i++) { 
+                    var eta=" eta ";
+                    if (num%1000>100) eta="";
+                    if (milles[i]=="bat") {
+                        for (j = 0; j < lower.length; j++) {                        
+                            founds.push('mila '+eta+lower[j]);
+                            // founds.push('mila bat eta '+lower[j]);
+                        };
+                    } else {
+                        for (j = 0; j < lower.length; j++) {                        
+                            founds.push(milles[i]+' mila '+eta+lower[j]);
+                        };
+                    }
+                    
+                };
+
+                found=true; 
+            } else if (num<1000000000) {
+                var milliones;
+                milliones = prepare_basque(Math.floor(num/(1000000)));
+                
+                var lower;
+                if (num%1000000!=0) {
+                    lower = prepare_basque(num%1000000); 
+                } else {
+                    lower = [''];
+                }
+                var j;
+                for (i = 0; i < milliones.length; i++) {
+                    if (milliones[i]=="bat") {
+                        for (j = 0; j < lower.length; j++) {                        
+                            founds.push('milioi bat eta '+lower[j]);
+                            // founds.push('mila bat eta '+lower[j]);
+                        };
+                    } else {
+                        for (j = 0; j < lower.length; j++) {                        
+                            founds.push(milliones[i]+' milioi eta '+lower[j]);
+                        };
+                    
+                    };
+                };
+                found=true; 
+            } else {
+                var billiones;
+                billiones = prepare_basque(Math.floor(num/(1000000000)));
+                
+                var lower;
+                if (num%1000000000!=0) {
+                    lower = prepare_basque(num%1000000000); 
+                } else {
+                    lower = [''];
+                }
+                var j;
+                for (i = 0; i < billiones.length; i++) {  
+                    if (billiones[i]=="bat") {
+                        for (j = 0; j < lower.length; j++) {                        
+                            founds.push('miliar bat eta '+lower[j]);
+                            // founds.push('mila bat eta '+lower[j]);
+                        };
+                    } else {
+                        for (j = 0; j < lower.length; j++) {                        
+                            founds.push(billiones[i]+' miliarak eta '+lower[j]);
+                        };
+                    
+                    };
+                };
+                found=true;                     
+            };
+        };
+        if (!(found)) {
+            return([(num).toString()]);
+        } else {
+            return([...new Set(founds)]);
+        };
+    };
 
       // <button ng-click="newHint()">Aide Vocabulaire </button>
       // <button ng-click="correctionFR()">Correction Français</button>
@@ -329,12 +576,23 @@ app.controller('myCtrl', function($scope) {
         if ($scope.hints.length>1) {
             var j=1;
             var i=1;
+            var k=0;
+            var l=[0];
+            var broken=false;
             for (i ; i < $scope.hints.length; i++) { 
-                if ($scope.hints[i].fr==$scope.hints[i-1].fr){
-                    reducedHints[j-1]+=", ";
-                    reducedHints[j-1]+=$scope.hints[i].eus;
-                } else {
+                broken=false;
+                for (k=0 ; k < i; k++) { 
+                    if ($scope.hints[i].fr==$scope.hints[k].fr){
+                        reducedHints[l[k]]+=", ";
+                        reducedHints[l[k]]+=$scope.hints[i].eus;
+                        l.push(l[k]);
+                        broken=true;
+                        break;
+                    };
+                };
+                if (!(broken)){
                     reducedHints.push($scope.hints[i].fr.trim() + '; ' + $scope.hints[i].es+ ' => ' + $scope.hints[i].eus);
+                    l.push(j);
                     j++;
                 };
             };
@@ -351,17 +609,35 @@ app.controller('myCtrl', function($scope) {
     };
 
     $scope.correctionFR = function(){
-        // $scope.message = $scope.targets[0];   
+        // $scope.message = $scope.targets[0]; 
+        $scope.nombre="";
         for (var i = 0; i < $scope.fr_nombres.length; i++) {
             $scope.nombre+=$scope.fr_nombres[i];
             if (i!=$scope.fr_nombres.length - 1) $scope.nombre+=', ';
         };        
     };
 
+    $scope.correctionES = function(){
+        // $scope.message = $scope.targets[0];  
+        $scope.numero="";
+        for (var i = 0; i < $scope.es_numeros.length; i++) {
+            $scope.numero+=$scope.es_numeros[i];
+            if (i!=$scope.es_numeros.length - 1) $scope.numero+=', ';
+        };        
+    };
+    
+    $scope.correctionEUS = function(){
+        // $scope.message = $scope.targets[0];  
+        $scope.zenbaki="";
+        for (var i = 0; i < $scope.eus_zenbakiak.length; i++) {
+            $scope.zenbaki+=$scope.eus_zenbakiak[i];
+            if (i!=$scope.eus_zenbakiak.length - 1) $scope.zenbaki+=', ';
+        };        
+    };
     $scope.solutions = function(){
         $scope.correctionFR();      
-        // $scope.correctionES();      
-        // $scope.correctionEUS();      
+        $scope.correctionES();      
+        $scope.correctionEUS();      
     };  
 
     
