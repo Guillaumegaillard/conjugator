@@ -60,5 +60,6 @@ if __name__ == '__main__':
 
     main_standal('Ukan_Izan')
     main_standal('Zenbakiak')
+    main_standal('Hau_Hori_Hura')
 
     

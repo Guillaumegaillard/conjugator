@@ -148,4 +148,5 @@ var auxiliaries=[
 
 var version_Ukan_Izan = '1.26';
 var version_Zenbakiak = '1.2';
+var version_Hau_Hori_Hura = '1.0';
 

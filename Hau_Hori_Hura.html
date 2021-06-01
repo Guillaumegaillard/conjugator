@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-US" ng-app="myApp" >
+<head>
+  <meta charset="utf-8" />
+	<title>Hau-Hori-Hura</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <script src="essentials.js"></script>
+  <!-- <script src="voca1.js"></script> -->
+  <script src="voca2.js"></script>
+  <script src="hau_hori_hura.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body role="document">
+  <div class="container theme-showcase" role="main">
+    <div ng-controller="myCtrl" ng-init="newTest()">
+      <!-- <h1>Test : {{deter1 + adj1 + name1 + verb  +" "+ deter2+ adj2 + name2 + "." | capitalize}}</h1> -->
+      <h1>Test : {{fr_phrase | capitalize}}</h1>
+  	
+      <button ng-click="newTest()">Nouveau</button>
+      <button ng-click="newHint()">Aide Vocabulaire</button>
+      <button ng-click="show_hhh_tab()">Aide Démonstratifs</button>
+      <!-- <button ng-click="show_cases_tab()">Aide Déclinaisons</button> -->
+      <button ng-click="correction()">Correction</button>
+      <button ng-click="solutions()">Toutes les solutions</button>
+
+    	<p>
+        <input  ng-class="check()==1?'bg-success-light':'bg-danger-light'" type="text" class="bigText" ng-model="client_input"   ng-keydown="validate($event)" >
+        </br>
+      	&nbsp;{{message | capitalize}}
+      </p>
+
+
+    <div>
+      <label>Encore {{num_hints}} aides voca possibles...</label>
+
+      <ul>
+        <li ng-repeat="x in shownHints">
+          {{ x }}
+          <!-- {{ x.fr.trim() + ': ' + x.eus }} -->
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <table ng-show="shown_hhh_tab">
+        <th></th>
+        <th>Ici</th>
+        <th>Là</th>
+        <th>Là-bas</th>
+        <tr>
+          <td>Sing. Nor</td>
+          <td>Hau</td>
+          <td>Hori</td>
+          <td>Hura</td>
+        </tr>
+        <tr>
+          <td>Sing. Autres Cas</td>
+          <td>Hon(e)-</td>
+          <td>Horr(e)-</td>
+          <td>Har-</td>
+        </tr>        
+        <tr>
+          <td>Plur.</td>
+          <td>Haue-</td>
+          <td>Horie-</td>
+          <td>Haie-</td>
+        </tr>        
+      </table>
+    </div>
+
+
+    <div ng-show="shown_solutions">
+      <label>Solution(s) :</label>
+
+      <ul>
+        <li ng-repeat="x in targets track by $index ">
+          {{ x | capitalize }}
+        </li>
+      </ul>
+    </div>
+    <div>
+      Hau_Hori_Hura version {{version_Hau_Hori_Hura}}
+    </div>
+    <div>
+    <a href="https://guillaumegaillard.github.io">Etxea - Home</a>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
