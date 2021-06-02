@@ -22,7 +22,8 @@
     <div ng-controller="myCtrl" ng-init="newNb()">
       <!-- <h1>Test : {{deter1 + adj1 + name1 + verb  +" "+ deter2+ adj2 + name2 + "." | capitalize}}</h1> -->
       <h1>Nombre : <input  ng-class="check_target()==1?'bg-success-light':'bg-danger-light'" type="text" class="bigText" ng-model="target_input"   ng-keydown="validate($event)" ></h1>
-      &nbsp;{{message | capitalize}}
+      &nbsp;{{message_head | capitalize}}
+      {{message | capitalize}}
       </br>
   	
       <button ng-click="newNb()">Nouveau</button>
@@ -64,6 +65,9 @@
         <p>
           Zenbakiak version {{ version_Zenbakiak }}
         </p>
+      </div>
+      <div>
+          <a href="https://guillaumegaillard.github.io">Etxea - Home</a>
       </div>
     </div>
 </div>

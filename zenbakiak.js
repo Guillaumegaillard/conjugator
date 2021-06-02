@@ -8,6 +8,7 @@ app.controller('myCtrl', function($scope) {
     $scope.shownHints = [];
     $scope.num_hints = 0;
 
+    $scope.message_head = "Écrivez un nombre entier en chiffres, puis Entrée, ou créez-en un nouveau.";
     $scope.message = "";
         
     $scope.target_input="";
@@ -545,7 +546,7 @@ app.controller('myCtrl', function($scope) {
                 
                 for (i = 0; i < milles.length; i++) { 
                     var eta=" eta ";
-                    if (num%1000>100) eta="";
+                    if ((num%1000>100)||(num%1000==0)) eta="";
                     if (milles[i]=="bat") {
                         for (j = 0; j < lower.length; j++) {                        
                             founds.push('mila '+eta+lower[j]);
@@ -572,14 +573,16 @@ app.controller('myCtrl', function($scope) {
                 }
                 var j;
                 for (i = 0; i < milliones.length; i++) {
+                    var eta=" eta ";
+                    if (num%1000000==0) eta="";
                     if (milliones[i]=="bat") {
                         for (j = 0; j < lower.length; j++) {                        
-                            founds.push('milioi bat eta '+lower[j]);
+                            founds.push('milioi bat'+eta+lower[j]);
                             // founds.push('mila bat eta '+lower[j]);
                         };
                     } else {
                         for (j = 0; j < lower.length; j++) {                        
-                            founds.push(milliones[i]+' milioi eta '+lower[j]);
+                            founds.push(milliones[i]+' milioi'+eta+lower[j]);
                         };
                     
                     };
@@ -597,14 +600,16 @@ app.controller('myCtrl', function($scope) {
                 }
                 var j;
                 for (i = 0; i < billiones.length; i++) {  
+                    var eta=" eta ";
+                    if (num%1000000000==0) eta="";
                     if (billiones[i]=="bat") {
                         for (j = 0; j < lower.length; j++) {                        
-                            founds.push('miliar bat eta '+lower[j]);
+                            founds.push('miliar bat'+eta+lower[j]);
                             // founds.push('mila bat eta '+lower[j]);
                         };
                     } else {
                         for (j = 0; j < lower.length; j++) {                        
-                            founds.push(billiones[i]+' miliar eta '+lower[j]);
+                            founds.push(billiones[i]+' miliar'+eta+lower[j]);
                         };
                     
                     };
