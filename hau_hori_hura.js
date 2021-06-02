@@ -313,7 +313,7 @@ app.controller('myCtrl', function($scope) {
 
 		var denom_part_fr=sufs_fr[iRandom_Dist];
 
-		if (cases[iRandom_case]["name"]=="noiz") {
+		if ((cases[iRandom_case]["name"]=="noiz")&&(iRandom_Dist==2)) {
 			if (iRandom_Num==1) {
 				if (fem1) {
 					denom_part_fr="lointaines";
